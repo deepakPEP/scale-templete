@@ -1,0 +1,26 @@
+@use "./_variables" as *;
+@use "./_mixins" as *;
+@use "./_utilities";
+@use "./_fonts";
+
+@use "./base/_base";
+@use "./layout/_layout";
+
+@use "./components/_header-footer";
+@use "./components/_hero-banner";
+@use "./components/_company";
+@use "./components/_overview";
+@use "./components/_productList";
+@use "./components/_whyus";
+@use "./components/_infrastructure";
+@use "./components/_clientele";
+@use "./components/_certifications";
+@use "./components/companyDetails";
+@use "./components/visionMission";
+@use "./components/_subBanner";
+@use "./components/_supplierForm";
+@use "./components/_accordion";
+@use "./components/_imageContent";
+@use "./components/_productListing";
+
+
