@@ -1,3 +1,84 @@
-/* Place custom @font-face declarations here if needed */
+/* Inter Tight */
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url('/font/InterTight-Thin.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/font/InterTight-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/font/InterTight-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/font/InterTight-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/font/InterTight-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url('/font/InterTight-Bold.ttf') format('truetype');
+}
+
+// Helvetica
+@font-face {
+  font-family: 'Helvetica';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/font/Helvetica.ttf') format('truetype');
+}
 
 
+// Barlow
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('/font/Barlow-Light.ttf') format('truetype');
+}
+
+
+// NeueHaasDisplayRoman
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/font/NeueHaasDisplayRoman.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Pro';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/font/NeueHaasDisplayMediu.ttf') format('truetype');
+}
