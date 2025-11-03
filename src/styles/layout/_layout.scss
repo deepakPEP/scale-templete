@@ -1,7 +1,169 @@
+// ============================================
+// Layout Styles
+// ============================================
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Container
 .container {
-  max-width: 72rem;
-  margin-inline: auto;
-  padding-inline: 1rem;
+  @include container;
 }
 
+// Grid System
+.grid {
+  display: grid;
+  gap: $spacing-lg;
+}
 
+.grid-2 {
+  @include grid-2;
+}
+
+.grid-3 {
+  @include grid-3;
+}
+
+.grid-4 {
+  @include grid-4;
+}
+
+// Flexbox Utilities
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  @include flex-center;
+}
+
+.flex-between {
+  @include flex-between;
+}
+
+.flex-column {
+  @include flex-column;
+}
+
+.flex-column-center {
+  @include flex-column-center;
+}
+
+.flex-wrap {
+  @include flex-wrap;
+}
+
+// Spacing Utilities
+.section-padding {
+  @include section-padding;
+}
+
+.padding-sm {
+  padding: $spacing-sm;
+}
+
+.padding-md {
+  padding: $spacing-md;
+}
+
+.padding-lg {
+  padding: $spacing-lg;
+}
+
+.padding-xl {
+  padding: $spacing-xl;
+}
+
+.margin-sm {
+  margin: $spacing-sm;
+}
+
+.margin-md {
+  margin: $spacing-md;
+}
+
+.margin-lg {
+  margin: $spacing-lg;
+}
+
+.margin-xl {
+  margin: $spacing-xl;
+}
+
+// Text Alignment
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// Display Utilities
+.hidden {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+.inline {
+  display: inline;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+// Visibility
+.visually-hidden {
+  @include visually-hidden;
+}
+
+// Responsive Utilities
+@include mobile {
+  .mobile-hidden {
+    display: none;
+  }
+  
+  .mobile-block {
+    display: block;
+  }
+  
+  .mobile-flex {
+    display: flex;
+  }
+}
+
+@include tablet {
+  .tablet-hidden {
+    display: none;
+  }
+  
+  .tablet-block {
+    display: block;
+  }
+  
+  .tablet-flex {
+    display: flex;
+  }
+}
+
+@include desktop {
+  .desktop-hidden {
+    display: none;
+  }
+  
+  .desktop-block {
+    display: block;
+  }
+  
+  .desktop-flex {
+    display: flex;
+  }
+}

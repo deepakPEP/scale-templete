@@ -1,12 +1,45 @@
-export default function AboutPage() {
+import {
+  Accordion,
+  Certifications,
+  Clientele,
+  Company,
+  CompanyDetails,
+  Imagecontent,
+  Overview,
+  SubBanner,
+  SupplierForm,
+  VisionMission,
+  Whyus,
+} from "@/components";
+
+export default function About() {
+
   return (
-    <section className="mx-auto max-w-3xl p-8">
-      <h1 className="mb-4 text-3xl font-bold">About Us</h1>
-      <p className="text-zinc-600">
-        This is a placeholder About page. Replace with your company profile and story.
-      </p>
-    </section>
+    <div className="min-h-screen">
+      <SubBanner
+        title="About Us"
+        description="Describe the Important features, pricing and other relevant info"
+      />
+
+      <Company />
+
+      <Overview />
+
+      <CompanyDetails />
+
+      <VisionMission />
+
+      <Whyus />
+
+      <Imagecontent />
+
+      <Certifications />
+
+      <Accordion />
+
+      <Clientele />
+
+      <SupplierForm />
+    </div>
   );
 }
-
-

@@ -1,26 +1,22 @@
-@use "./_variables" as *;
-@use "./_mixins" as *;
-@use "./_utilities";
-@use "./_fonts";
 
-@use "./base/_base";
-@use "./layout/_layout";
-
-@use "./components/_header-footer";
-@use "./components/_hero-banner";
-@use "./components/_company";
-@use "./components/_overview";
-@use "./components/_productList";
-@use "./components/_whyus";
-@use "./components/_infrastructure";
-@use "./components/_clientele";
-@use "./components/_certifications";
-@use "./components/companyDetails";
-@use "./components/visionMission";
-@use "./components/_subBanner";
-@use "./components/_supplierForm";
-@use "./components/_accordion";
-@use "./components/_imageContent";
-@use "./components/_productListing";
-
-
+@use './variables' as *;
+@use './mixins' as *;
+@use './utilities' as *;
+@use './base/base' as *;
+@use './layout/layout' as *;
+@use './components/header-footer' as *;
+@use './components/hero-banner' as *;
+@use './components/company' as *;
+@use './components/overview' as *;
+@use './components/whyus' as *;
+@use './components/supplierForm' as *;
+@use './components/clientele' as *;
+@use './components/infrastructure' as *;
+@use './components/productList' as *;
+@use './components/subBanner' as *;
+@use './components/accordion' as *;
+@use './components/imageContent' as *;
+@use './components/visionMission' as *;
+@use './components/companyDetails' as *;
+@use './components/certifications' as *;
+@use './components/productListing' as *;

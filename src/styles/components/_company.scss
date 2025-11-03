@@ -1,6 +1,264 @@
+@use "../variables" as *;
+
 .company-section {
-  max-width: 64rem;
-  margin-inline: auto;
+  background: $gray-100;
+  position: relative;
+
+  &__container {
+    display: flex;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0;
+
+    @media (max-width: $breakpoint-lg) {
+      flex-direction: row;
+    }
+  }
+
+  &__logo {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+
+    @media (min-width: $breakpoint-md) {
+      padding: 41px 0 52px;
+      flex: 0 0 30%;
+    }
+  }
+
+  &__logo-card {
+    background: $white;
+    border-radius: $border-radius-lg;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    box-shadow: $shadow-sm;
+    transition: all $transition-base;
+
+    @media (min-width: $breakpoint-md) {
+      min-width: 200px;
+      padding: $spacing-xl;
+      gap: $spacing-md;
+    }
+
+    img {
+      width: 23px;
+      height: 23px;
+      @media (min-width: $breakpoint-md) {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
+
+  &__logo-text {
+    font-family: $font-family-secondary;
+    font-size: 13px;
+    font-weight: 450;
+    line-height: 18px;
+    color: $text-primary;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 36px;
+      font-weight: 450;
+      line-height: 48px;
+    }
+  }
+
+  &__slider {
+    width: 70%;
+    padding: 30px;
+
+    @media (min-width: $breakpoint-md) {
+      padding: 65px 70px 70px;
+    }
+
+    @media (min-width: 950px) {
+      flex: 0 0 70%;
+      position: relative;
+      overflow: hidden;
+      padding: 65px 128px 70px;
+    }
+
+    .slick-slider {
+      position: relative;
+    }
+
+    .slick-list {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .slick-slide {
+      padding: 0 $spacing-sm;
+
+      > div {
+        height: 100%;
+      }
+    }
+
+    .slick-track {
+      display: flex;
+      align-items: stretch;
+    }
+  }
+
+  .company-card {
+    transition: all $transition-base;
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+
+    @media (min-width: $breakpoint-md) {
+      flex-direction: column;
+      align-items: start;
+    }
+
+    &__icon {
+      width: 48px;
+      height: 48px;
+      padding-bottom: 13px;
+    }
+
+    &__title {
+      font-family: $font-family-secondary;
+      font-size: 16px;
+      font-weight: 500;
+      color: $text-primary;
+      margin-bottom: 0;
+      line-height: 20px;
+    }
+
+    &__subtitle {
+      font-size: 16px;
+      font-weight: 450;
+      line-height: 20px;
+      margin: 0;
+    }
+  }
+
+  // Arrow Styles
+    &__arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 4;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all $transition-base;
+      padding: 90px 20px !important;
+
+      @media (min-width: $breakpoint-lg) {
+        box-shadow: $shadow-md;
+        padding: 120px 30px !important;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+      }
+
+      &:hover {
+        background: $white;
+      }
+
+      &--prev {
+        // left: $spacing-xl;
+        &::after {
+          background-image: url("/icons/arrow-left--black.svg"); // 🔹 your left arrow PNG
+        }
+
+        @media (max-width: $breakpoint-md) {
+          left: $spacing-md;
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      &--next {
+        // right: $spacing-xl;
+        &::after {
+          background-image: url("/icons/arrow-right--black.svg"); // 🔹 your right arrow PNG
+        }
+
+        @media (max-width: $breakpoint-md) {
+          right: $spacing-md;
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      // Hide arrows on very small screens
+      @media (max-width: $breakpoint-sm) {
+        display: none;
+      }
+
+      // Slick arrow overrides
+      &.slick-disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+
+        &:hover {
+          transform: translateY(-50%);
+          background: rgba($white, 0.9);
+          box-shadow: $shadow-md;
+        }
+      }
+    }
 }
 
+// Slick slider specific overrides
+.company-section {
+  .slick-prev,
+  .slick-next {
+    &:before {
+      content: "" !important;
+    }
+  }
 
+  .slick-prev {
+    left: -40px !important;
+    top: 25px;
+
+    @media (min-width: $breakpoint-md) {
+      top: 67px;
+      left: -70px !important;
+    }
+
+    @media (min-width: 950px) {
+      left: -128px !important;
+      top: 60px;
+    }
+  }
+
+  .slick-next {
+    right: -30px !important;
+    top: 25px;
+
+    @media (min-width: $breakpoint-md) {
+      top: 67px;
+      right: -66px !important;
+    }
+
+    @media (min-width: 950px) {
+      right: -130px !important;
+      top: 60px;
+    }
+  }
+}

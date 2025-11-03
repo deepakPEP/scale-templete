@@ -1,5 +1,115 @@
-.why-us {
-  columns: 2;
+@use "../variables" as *;
+
+.whyus-section {
+  padding: 16px;
+  background: #fafafa;
+  position: relative;
+
+  @media (min-width: $breakpoint-lg) {
+    padding: 80px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0;
+
+    @media (min-width: $breakpoint-lg) {
+      gap: 32px;
+    }
+  }
+
+  &--overview {
+    width: 100%;
+
+    @media (min-width: $breakpoint-lg) {
+      max-width: 888px;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: $font-weight-medium;
+      font-family: $font-family-secondary;
+      line-height: 133%;
+      color: $text-primary;
+      margin: 0 0 12px 0;
+
+      @media (min-width: $breakpoint-md) {
+        font-size: 30px;
+      }
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 155%;
+      font-family: $font-family-primary;
+      font-weight: $font-weight-normal;
+      color: $text-secondary;
+      margin: 0;
+
+      @media (min-width: $breakpoint-lg) {
+        font-size: 18px;
+      }
+    }
+  }
+
+  &--feature {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+
+    @media (min-width: $breakpoint-lg) {
+      gap: 32px;
+    }
+
+    &-item {
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 8px;
+
+      @media (min-width: $breakpoint-md) {
+        padding: 32px;
+      }
+
+      img {
+        margin-bottom: 12px;
+        width: 24px;
+        height: 24px;
+        @media (min-width: $breakpoint-md) {
+          width: 48px;
+          height: 48px;
+          margin-bottom: 24px;
+        }
+      }
+
+      h3 {
+        font-size: 14px;
+        font-weight: $font-weight-semibold;
+        font-family: $font-family-secondary;
+        line-height: 28px;
+        color: $text-primary;
+        margin: 0 0 12px 0;
+
+        @media (min-width: $breakpoint-md) {
+          font-size: 18px;
+        }
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 150%;
+        font-family: $font-family-secondary;
+        font-weight: $font-weight-normal;
+        color: $text-secondary;
+        margin: 0;
+
+        @media (min-width: $breakpoint-md) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
 }
-
-
