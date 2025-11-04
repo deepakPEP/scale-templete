@@ -1,0 +1,419 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.footer {
+  background-color: #333333;
+  color: $white;
+  width: 100%;
+
+  &__container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+
+    @media (min-width: 1920px) {
+      max-width: 1920px;
+    }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 32px 16px;
+
+    @media (min-width: 1920px) {
+      flex-direction: row;
+      gap: 60px;
+      padding: 64px 80px;
+      max-width: 1920px;
+      margin: 0 auto;
+    }
+  }
+
+  // Company Section
+  &__company {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 24px;
+
+    @media (min-width: 1920px) {
+      flex: 1.5;
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  &__logo-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__company-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: $white;
+    margin: 0;
+    font-family: $font-family-primary;
+  }
+
+  &__description {
+    font-size: 14px;
+    line-height: 24px;
+    color: #cccccc;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  // Contact Section
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+  }
+
+  &__contact-label {
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    color: $white;
+    margin-bottom: 4px;
+  }
+
+  &__contact-text {
+    font-size: 14px;
+    line-height: 20px;
+    color: #cccccc;
+    margin: 0;
+  }
+
+  &__contact-phone-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  // Social Media
+  &__social {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__social-label {
+    font-size: 14px;
+    color: #cccccc;
+  }
+
+  &__social-icons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  // Action Buttons
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+
+    @media (min-width: 1920px) {
+      flex-direction: row;
+      gap: 12px;
+    }
+  }
+
+  // Navigation Section (Mobile Accordion)
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+
+    @media (min-width: 1920px) {
+      flex-direction: row;
+      gap: 40px;
+      flex: 1;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  &__nav-section {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 16px 0;
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+
+    &--simple {
+      border-bottom: none;
+      padding: 16px 0 0;
+    }
+
+    @media (min-width: 1920px) {
+      flex: 1;
+      border-bottom: none;
+      padding: 0;
+    }
+  }
+
+  &__nav-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+
+    @media (min-width: 1920px) {
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+
+  &__toggle-icon {
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+
+    &--open {
+      transform: rotate(45deg);
+    }
+
+    @media (min-width: 1920px) {
+      display: none;
+    }
+  }
+
+  &__nav-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding-top: 0;
+
+    &--open {
+      max-height: 1000px;
+      padding-top: 16px;
+    }
+
+    @media (min-width: 1920px) {
+      max-height: none;
+      overflow: visible;
+      padding-top: 20px;
+    }
+  }
+
+  &__contact-link {
+    font-size: 16px;
+    font-weight: 700;
+    color: $white;
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #cccccc;
+    }
+  }
+
+  // Links Columns (for desktop)
+  &__links-column {
+    display: none;
+
+    @media (min-width: 1920px) {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex: 1;
+    }
+  }
+
+  &__links-heading {
+    font-size: 16px;
+    font-weight: 700;
+    color: $white;
+    margin: 0;
+    font-family: $font-family-primary;
+  }
+
+  &__links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    li {
+      margin: 0;
+    }
+
+    a {
+      font-size: 14px;
+      line-height: 24px;
+      color: #cccccc;
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  // Products Group
+  &__products-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__products-group-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: $white;
+    margin: 0;
+    font-family: $font-family-primary;
+  }
+
+  // Social Media Bottom
+  &__social-bottom {
+    padding: 24px 16px;
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    @media (min-width: 1920px) {
+      display: none; // Hide on desktop, show in company section instead
+    }
+  }
+
+  // Bottom Bar
+  &__bottom {
+    background-color: #222222;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @media (min-width: 1920px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 80px;
+      max-width: 1920px;
+      margin: 0 auto;
+    }
+  }
+
+  &__bottom-left {
+    display: flex;
+    align-items: center;
+  }
+
+  &__bottom-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+
+    @media (min-width: $breakpoint-md) {
+      flex-direction: row;
+      align-items: center;
+      gap: 24px;
+    }
+  }
+
+  &__copyright {
+    font-size: 14px;
+    line-height: 20px;
+    color: #cccccc;
+    margin: 0;
+  }
+
+  &__legal-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 14px;
+    color: #cccccc;
+
+    a {
+      color: #cccccc;
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $white;
+      }
+    }
+
+    span {
+      color: #cccccc;
+    }
+  }
+}
+
+// Footer Button Styles Override
+.btn-view-number {
+  @include button-view-number;
+}
+
+.btn-footer-action {
+  @include button-footer-action;
+  width: 100%;
+
+  @media (min-width: $breakpoint-md) {
+    width: auto;
+    min-width: 150px;
+  }
+}
+
+.btn-language-selector {
+  @include button-language-selector;
+}
+

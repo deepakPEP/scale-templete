@@ -4,7 +4,6 @@ export { default as Footer } from './Footer';
 
 // Section Components
 export { default as HeroBanner } from './heroBanner';
-export { default as Company } from './company';
 export { default as Overview } from './overview';
 export { default as Whyus } from './whyUs';
 export { default as SupplierForm } from './supplierForm';
@@ -18,3 +17,7 @@ export { default as VisionMission } from './visionMission';
 export { default as CompanyDetails } from './companyDetails';
 export { default as Certifications } from './certifications';
 export { default as ProductListing } from './productListing';
+export { default as ProductDetails } from './productDetails';
+export { default as Offices } from './offices';
+export { default as CTABanner } from './ctaBanner';
+export { default as Testimonial } from './testimonial';

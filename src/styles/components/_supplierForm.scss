@@ -1,36 +1,31 @@
 @use "../variables" as *;
 
 .supplierForm-section {
-  background: #fafafa;
+  background: #ffffff;
   padding: 16px;
   position: relative;
 
   @media (min-width: $breakpoint-lg) {
-    padding: 60px 80px 112px;
+    padding: 60px 80px;
   }
 
   &__container {
     display: flex;
     max-width: 1920px;
     margin: 0 auto;
-    gap: 16px;
+    gap: 24px;
     background: $white;
-    border-radius: 12px;
-    overflow: hidden;
     flex-direction: column;
-    padding: 16px;
 
     @media (min-width: $breakpoint-lg) {
       flex-direction: row;
-      padding: 56px;
-      gap: 36px;
+      gap: 48px;
     }
   }
 
+  // Left Side - Contact Information
   &__left {
     width: 100%;
-    display: flex;
-    background: $white;
 
     @media (min-width: $breakpoint-lg) {
       flex: 0 0 50%;
@@ -39,46 +34,188 @@
 
   &__content {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+
+    @media (min-width: $breakpoint-lg) {
+      gap: 32px;
+    }
   }
 
   &__heading {
     font-family: $font-family-primary;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 18px;
-    color: $text-primary;
-    margin-bottom: 16px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #1a1a1a;
+    margin: 0;
+    margin-bottom: 8px;
 
     @media (min-width: $breakpoint-lg) {
-      font-size: 36px;
-      font-weight: 500;
-      line-height: 133%;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 12px;
     }
   }
 
-  &__privacy {
+  &__subtitle {
+    font-family: $font-family-primary;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6b7280;
+    margin: 0;
+    margin-bottom: 0;
+
+    @media (min-width: $breakpoint-lg) {
+      font-size: 16px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__info-section {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-  }
+    gap: 8px;
 
-  &__privacy-text,
-  &__response-text {
-    font-size: 14px;
-    line-height: 20px;
-    color: $text-secondary;
-    margin: 0;
-
-    @media (min-width: $breakpoint-md) {
-      font-size: 18px;
-      line-height: 133%;
+    @media (min-width: $breakpoint-lg) {
+      gap: 12px;
     }
   }
 
-  // Right Side (50%) - Form
+  &__info-heading {
+    font-family: $font-family-primary;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #1a1a1a;
+    margin: 0;
+
+    @media (min-width: $breakpoint-lg) {
+      font-size: 16px;
+    }
+  }
+
+  &__info-text {
+    font-family: $font-family-primary;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #6b7280;
+    margin: 0;
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      font-size: 15px;
+    }
+  }
+
+  &__phone-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  &__phone-number {
+    font-family: $font-family-primary;
+    font-size: 14px;
+    font-weight: 400;
+    color: #6b7280;
+
+    @media (min-width: $breakpoint-lg) {
+      font-size: 15px;
+    }
+  }
+
+  &__view-number-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    background-color: #f9fafb;
+    color: #9ca3af;
+    font-family: $font-family-primary;
+    font-size: 11px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    height: 24px;
+
+    svg {
+      width: 12px;
+      height: 12px;
+      stroke-width: 2;
+      color: #9ca3af;
+    }
+
+    &:hover {
+      background-color: #f3f4f6;
+      border-color: #d1d5db;
+    }
+
+    &:active {
+      background-color: #e5e7eb;
+    }
+  }
+
+  &__action-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+
+  &__action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 10px 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    background-color: #f3f4f6;
+    color: #374151;
+    font-family: $font-family-primary;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    span {
+      color: #374151;
+    }
+
+    &:hover {
+      background-color: #e5e7eb;
+      border-color: #d1d5db;
+    }
+
+    &:active {
+      background-color: #d1d5db;
+    }
+  }
+
+  // Right Side - Form
   &__right {
     width: 100%;
-    background: $white;
 
     @media (min-width: $breakpoint-lg) {
       flex: 0 0 50%;
@@ -89,53 +226,31 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-  }
-
-  &__form-row {
-    display: flex;
     gap: 16px;
-
-    @media (max-width: $breakpoint-sm) {
-      flex-direction: column;
-      gap: 16px;
-    }
-  }
-
-  &__form-group {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  &__label {
-    font-size: $font-size-sm;
-    font-weight: $font-weight-medium;
-    color: $text-primary;
-    margin-bottom: 4px;
+    margin-top: 0;
   }
 
   &__input,
-  &__select,
   &__textarea {
     padding: 12px 16px;
-    border: 1px solid #9fa6ad;
+    border: 1px solid #e5e7eb;
     border-radius: 8px;
-    font-size: $font-size-base;
+    font-size: 15px;
     font-family: $font-family-primary;
     background: $white;
-    color: $text-primary;
-    transition: border-color $transition-base, box-shadow $transition-base;
+    color: #1a1a1a;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
 
     &::placeholder {
       color: #9ca3af;
+      font-weight: 400;
     }
 
     &:focus {
       outline: none;
-      border-color: $primary-500;
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      border-color: #d1d5db;
+      box-shadow: 0 0 0 1px rgba(229, 231, 235, 0.5);
     }
 
     &:hover {
@@ -144,46 +259,77 @@
   }
 
   &__input {
-    width: 100%;
     height: 48px;
-  }
-
-  &__select {
-    height: 48px;
-    cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
-    background-position: right 12px center;
-    background-repeat: no-repeat;
-    background-size: 16px;
-    padding-right: 40px;
   }
 
   &__textarea {
-    min-height: 120px;
+    min-height: 100px;
     resize: vertical;
     font-family: $font-family-primary;
+    padding-top: 12px;
+    line-height: 1.5;
   }
 
-  &__input-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-
-  &__input--with-icon {
-    padding-right: 40px;
-  }
-
-  &__search-icon {
-    position: absolute;
-    right: 12px;
+  &__privacy-notice {
+    font-family: $font-family-primary;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
     color: #9ca3af;
-    pointer-events: none;
+    margin: 0;
+    margin-top: 8px;
+    margin-bottom: 4px;
+
+    @media (min-width: $breakpoint-lg) {
+      font-size: 13px;
+    }
   }
 
   &__submit {
     display: flex;
-    margin-top: 20px;
+    justify-content: flex-end;
+    margin-top: 4px;
+    align-items: flex-end;
+  }
+
+  &__submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+    color: #ffffff;
+    font-family: $font-family-primary;
+    font-size: 15px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 120px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      stroke-width: 2.5;
+      color: #ffffff;
+    }
+
+    span {
+      color: #ffffff;
+    }
+
+    &:hover {
+      background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
   }
 }

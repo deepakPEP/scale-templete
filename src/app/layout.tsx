@@ -4,6 +4,7 @@ import "@/styles/tailwind.css";
 import "@/styles/main.scss";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CTABanner from "@/components/ctaBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GrowTemplate - Building the Future",
+  title: "ScaleTemplate - Building the Future",
   description: "Building the future with innovative solutions and cutting-edge technology.",
 };
 
@@ -34,6 +35,7 @@ export default function RootLayout({
         <main className="min-h-screen">
           {children}
         </main>
+        <CTABanner />
         <Footer />
       </body>
     </html>

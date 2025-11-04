@@ -5,108 +5,146 @@ import Image from "next/image";
 import { useState } from "react";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false);
+  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
+
   const navigation = [
     { name: "Home", href: "/" },
-    { name: "Products", href: "/products" },
-    { name: "About us", href: "/about" },
+    { 
+      name: "About us", 
+      href: "/about",
+      hasDropdown: true,
+      items: ["Company", "Team", "History"]
+    },
+    { 
+      name: "Products", 
+      href: "/products",
+      hasDropdown: true,
+      items: ["Category 1", "Category 2", "Category 3"]
+    },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
-    <>
-      {/* Main Header */}
-      <header className="bg-white sticky top-0 z-50">
-        <div className="container navbar">
-          <div className="flex justify-between items-center">
-            <div className="navbar-logo">
-              <div className="navlogo flex items-center">
-                <Link href="/" className="flex items-center">
-                  <Image
-                    src="/images/logo.png"
-                    alt="Logo"
-                    width={184}
-                    height={36}
-                  />
-                </Link>
+    <header className="header-main bg-white sticky top-0 z-50 border-b border-gray-200">
+      <div className="container header-container">
+        <div className="header-content">
+          {/* Desktop: Left Logo */}
+          <div className="header-logo header-logo-desktop">
+            <Link href="/" className="flex items-center gap-2">
+              <div className="header-logo-icon">
+                {/* Logo graphic placeholder - replace with actual logo component */}
+                <div className="header-logo-graphic"></div>
               </div>
+              <span className="header-logo-text">Company Logo</span>
+            </Link>
+          </div>
 
-              <button className="navCategories flex items-center space-x-2">
-                <Image
-                  src="/icons/menu-icon.svg"
-                  alt="menu"
-                  width={20}
-                  height={20}
-                />
-                <span className="font-medium">All Categories</span>
-              </button>
-            </div>
+          {/* Mobile: Hamburger Menu Button (Left) */}
+          <button
+            className="header-mobile-menu-btn"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <svg
+              className="header-mobile-menu-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
 
-            <div className="navbar-search">
-              <div className="navbar-search--main">
-                <svg
-                  className="h-5 w-5 text-gray-400 mr-3"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-                <input
-                  type="text"
-                  placeholder="What are you looking for?"
-                  className="flex-1 outline-none "
-                />
-                <div className="flex items-center space-x-4 ml-3">
-                  <button>
-                    <svg
-                      className="h-5 w-5 text-gray-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+          {/* Mobile: Center Logo */}
+          <div className="header-logo header-logo-mobile">
+            <Link href="/" className="flex items-center gap-2">
+              <div className="header-logo-icon">
+                <div className="header-logo-graphic"></div>
+              </div>
+              <span className="header-logo-text">Company Logo</span>
+            </Link>
+          </div>
+
+          {/* Desktop: Middle Navigation */}
+          <nav className="header-nav">
+            <div className="header-nav-links">
+              {navigation.map((item) => (
+                <div key={item.name} className="header-nav-item">
+                  {item.hasDropdown ? (
+                    <div 
+                      className="header-nav-link-with-dropdown"
+                      onMouseEnter={() => item.name === "About us" ? setIsAboutOpen(true) : setIsProductsOpen(true)}
+                      onMouseLeave={() => item.name === "About us" ? setIsAboutOpen(false) : setIsProductsOpen(false)}
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
-                      />
-                    </svg>
-                  </button>
-                  <button>
-                    <svg
-                      className="h-5 w-5 text-gray-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </button>
+                      <Link href={item.href} className="header-nav-link">
+                        {item.name}
+                        <svg
+                          className="header-dropdown-icon"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </Link>
+                      {(item.name === "About us" ? isAboutOpen : isProductsOpen) && (
+                        <div className="header-dropdown">
+                          {item.items?.map((subItem) => (
+                            <Link
+                              key={subItem}
+                              href={`${item.href}/${subItem.toLowerCase().replace(' ', '-')}`}
+                              className="header-dropdown-item"
+                            >
+                              {subItem}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <Link href={item.href} className="header-nav-link">
+                      {item.name}
+                    </Link>
+                  )}
                 </div>
-              </div>
+              ))}
             </div>
+          </nav>
 
-            <div className="navbar-actions">
-              <div className="navbar-actions--lang">
+          {/* Desktop: Right Actions (Language, Search, CTA) */}
+          <div className="header-actions header-actions-desktop">
+            {/* Language Selector */}
+            <div 
+              className="header-lang-selector"
+              onMouseEnter={() => setIsLangOpen(true)}
+              onMouseLeave={() => setIsLangOpen(false)}
+            >
+              <button className="header-lang-button">
                 <Image
                   src="/icons/globe-alt.svg"
-                  alt="Logo"
-                  width={24}
-                  height={24}
+                  alt="Language"
+                  width={16}
+                  height={16}
+                  className="header-lang-icon"
                 />
-                <span className="font-medium">EN</span>
+                <span className="header-lang-text">EN</span>
                 <svg
-                  className="h-4 w-4"
+                  className="header-lang-dropdown-icon"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -118,99 +156,160 @@ const Header = () => {
                     d="M19 9l-7 7-7-7"
                   />
                 </svg>
-              </div>
-
-              {/* Notifications */}
-              <button className="cursor-pointer">
-                <Image
-                  src="/icons/bell.svg"
-                  alt="Logo"
-                  width={24}
-                  height={24}
-                />
               </button>
-
-              {/* App Menu */}
-              <button className="hidden md:block! cursor-pointer">
-                <Image
-                  src="/icons/dot-menu.svg"
-                  alt="Logo"
-                  width={18}
-                  height={18}
-                />
-              </button>
-
-              <button className=" cursor-pointer">
-                <Image
-                  src="/icons/profile-icon.svg"
-                  alt="Logo"
-                  width={24}
-                  height={24}
-                />
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-      <div className="navigationBar">
-        <div className="container">
-          <div className="flex justify-between items-center">
-            <div className="hidden md:flex!">
-              {navigation.map((item, index) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`navigationBar-link px-6 py-2 font-medium text-gray-800 bg-white 
-              ${index === 0 ? "rounded-l-[40px]" : ""} 
-              ${index === navigation.length - 1 ? "rounded-r-[40px]" : ""} 
-              ${
-                index !== navigation.length - 1
-                  ? "border-r border-black/40"
-                  : ""
-              }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-
-            {/* Mobile Navigation */}
-            <div className="md:hidden relative">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center"
-              >
-                <Image
-                  src="/icons/menu-icon.svg"
-                  alt="menu"
-                  width={20}
-                  height={20}
-                />
-              </button>
-
-              {isOpen && (
-                <div className="absolute left-0 mt-2 w-48 rounded-lg shadow-lg bg-white border border-gray-200">
-                  {navigation.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
+              {isLangOpen && (
+                <div className="header-lang-dropdown">
+                  <button className="header-lang-dropdown-item">English</button>
+                  <button className="header-lang-dropdown-item">Español</button>
+                  <button className="header-lang-dropdown-item">Français</button>
                 </div>
               )}
             </div>
 
-            <Link className="btn-primary" href="/contact">
+            {/* Search Bar */}
+            <div className="header-search">
+              <svg
+                className="header-search-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
+              <input
+                type="text"
+                placeholder="Search for products..."
+                className="header-search-input"
+              />
+            </div>
+
+            {/* Request Quote Button */}
+            <Link href="/contact" className="header-cta-button">
+              Request Quote
+            </Link>
+          </div>
+
+          {/* Mobile: Right Actions (Search Icon, Contact Us) */}
+          <div className="header-actions header-actions-mobile">
+            {/* Search Icon Button */}
+            <button className="header-mobile-search-btn" aria-label="Search">
+              <svg
+                className="header-mobile-search-icon"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
+            </button>
+
+            {/* Contact Us Button */}
+            <Link href="/contact" className="header-mobile-cta-button">
               Contact Us
             </Link>
           </div>
         </div>
+
+        {/* Mobile Menu Overlay */}
+        {isMobileMenuOpen && (
+          <>
+            <div 
+              className="header-mobile-overlay"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+            <div className={`header-mobile-menu ${isMobileMenuOpen ? 'header-mobile-menu-open' : ''}`}>
+              <div className="header-mobile-menu-content">
+                {navigation.map((item) => (
+                  <div key={item.name} className="header-mobile-menu-item-wrapper">
+                    {item.hasDropdown ? (
+                      <div className="header-mobile-menu-accordion">
+                        <div className="header-mobile-menu-accordion-header">
+                          <Link 
+                            href={item.href} 
+                            className="header-mobile-menu-accordion-link"
+                            onClick={(e) => {
+                              // Allow navigation when clicking the link
+                              setIsMobileMenuOpen(false);
+                            }}
+                          >
+                            {item.name}
+                          </Link>
+                          <button
+                            className="header-mobile-menu-accordion-toggle"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              if (item.name === "About us") {
+                                setIsMobileAboutOpen(!isMobileAboutOpen);
+                              } else if (item.name === "Products") {
+                                setIsMobileProductsOpen(!isMobileProductsOpen);
+                              }
+                            }}
+                            aria-label="Toggle submenu"
+                          >
+                            <svg
+                              className={`header-mobile-menu-accordion-icon ${
+                                (item.name === "About us" ? isMobileAboutOpen : isMobileProductsOpen) 
+                                  ? 'header-mobile-menu-accordion-icon-open' 
+                                  : ''
+                              }`}
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M19 9l-7 7-7-7"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                        {(item.name === "About us" ? isMobileAboutOpen : isMobileProductsOpen) && (
+                          <div className="header-mobile-menu-accordion-content">
+                            {item.items?.map((subItem) => (
+                              <Link
+                                key={subItem}
+                                href={`${item.href}/${subItem.toLowerCase().replace(' ', '-')}`}
+                                className="header-mobile-menu-accordion-item"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                {subItem}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="header-mobile-menu-item"
+                      >
+                        {item.name}
+                      </Link>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
       </div>
-    </>
+    </header>
   );
 };
 
