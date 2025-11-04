@@ -212,6 +212,19 @@ hr {
   @include button-ghost;
 }
 
+// Footer Button Variants
+.btn-view-number {
+  @include button-view-number;
+}
+
+.btn-footer-action {
+  @include button-footer-action;
+}
+
+.btn-language-selector {
+  @include button-language-selector;
+}
+
 // Button Sizes
 .btn-sm {
   padding: $spacing-xs $spacing-sm;

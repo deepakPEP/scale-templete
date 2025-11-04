@@ -2,12 +2,12 @@ import {
   Accordion,
   Certifications,
   Clientele,
-  Company,
   CompanyDetails,
   Imagecontent,
   Overview,
   SubBanner,
   SupplierForm,
+  Testimonial,
   VisionMission,
   Whyus,
 } from "@/components";
@@ -20,8 +20,6 @@ export default function About() {
         title="About Us"
         description="Describe the Important features, pricing and other relevant info"
       />
-
-      <Company />
 
       <Overview />
 
@@ -36,6 +34,8 @@ export default function About() {
       <Certifications />
 
       <Accordion />
+
+      <Testimonial/>
 
       <Clientele />
 

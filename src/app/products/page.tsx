@@ -1,4 +1,4 @@
-import { Company, ProductListing, SubBanner, SupplierForm } from "@/components";
+import { ProductListing, SubBanner, SupplierForm, ProductList } from "@/components";
 
 export default function Products() {
 
@@ -6,9 +6,7 @@ export default function Products() {
     <div className="min-h-screen">
       <SubBanner title="Products" description="Describe the Important features, pricing and other relevant info" />
 
-      <Company />
-
-      <ProductListing />
+      <ProductList maxItems={12} />
 
       <SupplierForm />
     </div>

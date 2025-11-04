@@ -1,11 +1,11 @@
 @use "../variables" as *;
 
 .product-list-section {
-  padding: 16px;
-  background-color: $bg-secondary;
+  padding: 40px 16px;
+  background-color: $white;
 
   @media (min-width: $breakpoint-md) {
-    padding: 64px 80px;
+    padding: 80px 80px;
   }
 
   &__container {
@@ -13,127 +13,195 @@
     margin: 0 auto;
   }
 
+  // Header Section
   &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    text-align: center;
     margin-bottom: 40px;
-    gap: 20px;
-    flex-direction: row;
+
+    @media (min-width: $breakpoint-md) {
+      margin-bottom: 60px;
+    }
   }
 
   &__title {
     font-family: $font-family-secondary;
-    font-size: 20px;
-    font-weight: $font-weight-bold;
-    color: $text-primary;
-    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    color: #333333;
+    margin: 0 0 16px;
 
     @media (min-width: $breakpoint-md) {
-      font-size: $font-size-4xl;
+      font-size: 48px;
+      margin-bottom: 20px;
     }
   }
 
-  &__sort {
-    position: relative;
+  &__subtitle {
+    font-family: $font-family-primary;
+    font-size: 14px;
+    font-weight: 400;
+    color: #666666;
+    margin: 0;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 16px;
+    }
   }
 
-  &__sort-select {
-    appearance: none;
-    background: $white;
-    border: 1px solid $border-medium;
-    border-radius: $border-radius-lg;
-    padding: 12px 40px 12px 16px;
-    font-family: $font-family-secondary;
-    font-size: $font-size-base;
-    color: $text-primary;
+  // Tab Navigation
+  &__tabs {
+    margin-bottom: 40px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE and Edge
+
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari, Opera
+    }
+
+    @media (min-width: $breakpoint-md) {
+      margin-bottom: 60px;
+    }
+  }
+
+  &__tabs-wrapper {
+    display: flex;
+    gap: 12px;
+    padding-bottom: 8px;
+    min-width: fit-content;
+
+    @media (min-width: $breakpoint-md) {
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__tab {
+    padding: 10px 20px;
+    border: 1px solid #e0e0e0;
+    background-color: #f5f5f5;
+    color: #666666;
+    border-radius: 6px;
+    font-family: $font-family-primary;
+    font-size: 14px;
+    font-weight: 500;
     cursor: pointer;
-    min-width: 180px;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
-    background-position: right 12px center;
-    background-repeat: no-repeat;
-    background-size: 16px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
 
-    &:focus {
-      outline: none;
-      border-color: $primary-500;
-      box-shadow: 0 0 0 3px rgba($primary-500, 0.1);
+    @media (min-width: $breakpoint-md) {
+      padding: 12px 24px;
+      font-size: 16px;
+    }
+
+    &:hover {
+      background-color: #e8e8e8;
+      border-color: #d0d0d0;
+    }
+
+    &--active {
+      background-color: #1a1a1a;
+      color: $white;
+      border-color: #1a1a1a;
+
+      &:hover {
+        background-color: #2a2a2a;
+        border-color: #2a2a2a;
+      }
     }
   }
 
+  // Product Grid - Mobile First (2 columns), Desktop (3 columns)
   &__grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 46px;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 0;
 
-    @media (max-width: $breakpoint-xl) {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    @media (max-width: $breakpoint-lg) {
+    @media (min-width: $breakpoint-md) {
       grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
     }
 
-    @media (max-width: $breakpoint-md) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    @media (max-width: $breakpoint-sm) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
+    @media (min-width: $breakpoint-lg) {
+      gap: 40px;
     }
   }
 
+  // View All Button
   &__actions {
     display: flex;
     justify-content: center;
     margin-top: 40px;
+
+    @media (min-width: $breakpoint-md) {
+      margin-top: 60px;
+    }
+  }
+
+  &__view-all {
+    padding: 12px 32px;
+    background-color: #e8e8e8;
+    color: #666666;
+    border: none;
+    border-radius: 6px;
+    font-family: $font-family-primary;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    @media (min-width: $breakpoint-md) {
+      padding: 14px 40px;
+      font-size: 18px;
+    }
+
+    &:hover {
+      background-color: #d8d8d8;
+      color: #555555;
+    }
   }
 }
 
+// Product Card Styles
 .product-card {
   background: $white;
-  border-radius: $border-radius-xl;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: $shadow-sm;
-  transition: all $transition-base;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
   height: 100%;
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  color: inherit;
 
   &:hover {
-    box-shadow: $shadow-md;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
     transform: translateY(-2px);
   }
 
+  // Image Container
   &__image-container {
     position: relative;
+    width: 100%;
     aspect-ratio: 1;
-    background: $gray-100;
+    background: #f5f5f5;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  &__trending {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    background: #e3fbe3;
-    color: $white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-family: $font-family-secondary;
-    font-size: $font-size-xs;
-    font-weight: $font-weight-medium;
-    color: #198754;
-    z-index: 2;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
 
     @media (min-width: $breakpoint-md) {
-      top: 12px;
-      left: 12px;
+      background: $white;
     }
   }
 
@@ -143,102 +211,181 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    background: $gray-200;
-  }
-
-  &__placeholder-icon {
-    width: 100%;
-    height: 100%;
-    color: $text-secondary;
-  }
-
-  &__content {
-    flex-grow: 1;
-    padding: 7px;
-    display: flex;
-    flex-direction: column;
+    background: #f5f5f5;
 
     @media (min-width: $breakpoint-md) {
-      padding: 16px 15px 22px;
+      background: $white;
+    }
+
+    svg {
+      opacity: 0.6;
     }
   }
 
-  &__title {
+  // Content
+  &__content {
+    flex-grow: 1;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    @media (min-width: $breakpoint-md) {
+      padding: 20px;
+      gap: 16px;
+    }
+  }
+
+  // Product Name
+  &__name {
     font-family: $font-family-secondary;
-    font-size: 11px;
-    font-weight: 450;
-    color: $text-secondary;
-    margin: 0 0 15px;
-    line-height: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #000000;
+    margin: 0;
+    line-height: 1.4;
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* limit to 2 lines */
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
 
     @media (min-width: $breakpoint-md) {
-      font-size: 14px;
-      line-height: 20px;
+      font-size: 16px;
+      color: #333333;
     }
   }
 
-  &__price {
-    font-family: $font-family-secondary;
+  // Description - Show on desktop only
+  &__description {
+    font-family: $font-family-primary;
     font-size: 13px;
-    line-height: 23px;
-    font-weight: 600;
-    color: $text-primary;
+    font-weight: 400;
+    color: #666666;
     margin: 0;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: none; // Hide on mobile
 
     @media (min-width: $breakpoint-md) {
-      font-size: 18px;
-      line-height: 28px;
+      display: -webkit-box; // Show on desktop
+      font-size: 14px;
     }
   }
 
-  &__stock {
-    font-family: $font-family-secondary;
-    font-size: 11px;
-    font-weight: 450;
-    color: $text-secondary;
-    margin: 0;
-    line-height: 18px;
+  // Attributes
+  &__attributes {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 0;
+  }
 
-    span {
-      color: #198754;
-      padding-right: 7px;
-    }
+  &__attribute {
+    padding: 6px 12px;
+    background-color: #f0f0f0;
+    color: #000000;
+    border-radius: 20px;
+    font-family: $font-family-primary;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
 
     @media (min-width: $breakpoint-md) {
+      padding: 8px 14px;
       font-size: 12px;
-      line-height: 18px;
+      color: #666666;
+      border-radius: 6px;
+    }
 
-      span {
-        color: #198754;
-        padding-right: 7px;
+    &--more {
+      padding: 6px 10px;
+      font-size: 11px;
+      color: #000000;
+
+      @media (min-width: $breakpoint-md) {
+        padding: 8px 12px;
+        font-size: 12px;
+        color: #666666;
       }
     }
   }
 
-  &__delivery {
-    font-family: $font-family-secondary;
-    font-size: 10px;
-    color: $text-secondary;
-    margin: 5px 0 0;
-    line-height: $line-height-normal;
+  // Action Buttons - Stacked on mobile, side-by-side on desktop
+  &__actions {
     display: flex;
-
-    img {
-      width: 18px;
-      height: 18px;
-    }
+    flex-direction: column;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 4px;
 
     @media (min-width: $breakpoint-md) {
-      font-size: 12px;
+      flex-direction: row;
+      gap: 12px;
+      padding-top: 8px;
+    }
+  }
 
-      img {
-        width: 22px;
-        height: 22px;
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-family: $font-family-primary;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    width: 100%;
+
+    @media (min-width: $breakpoint-md) {
+      padding: 12px 16px;
+      font-size: 14px;
+      flex: 1; // Equal width on desktop
+    }
+
+    svg {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+    }
+
+    &--chat {
+      background-color: #f0f0f0;
+      color: #000000;
+      order: 1;
+
+      @media (min-width: $breakpoint-md) {
+        color: #666666;
+      }
+
+      &:hover {
+        background-color: #e0e0e0;
+      }
+    }
+
+    &--quote {
+      background-color: #333333;
+      color: $white;
+      order: 2;
+
+      @media (min-width: $breakpoint-md) {
+        background-color: #000000;
+      }
+
+      &:hover {
+        background-color: #1a1a1a;
+
+        @media (min-width: $breakpoint-md) {
+          background-color: #1a1a1a;
+        }
       }
     }
   }

@@ -1,6 +1,6 @@
 'use client';
 
-import { Company, SubBanner, SupplierForm } from '@/components';
+import { SubBanner, SupplierForm, Offices } from '@/components';
 
 export default function Contact() {
 
@@ -9,9 +9,10 @@ export default function Contact() {
 
       <SubBanner title="Contact Us" description="Describe the Important features, pricing and other relevant info" />
 
-      <Company />
 
       <SupplierForm />
+
+      <Offices />
     </div>
   );
 }
