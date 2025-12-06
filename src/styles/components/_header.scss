@@ -9,14 +9,14 @@
   .header-container {
     max-width: 1920px;
     margin: 0 auto;
-    padding: 16px 24px;
+    padding: 8px 12px;
     
     @media (min-width: $breakpoint-md) {
       padding: 20px 48px;
     }
     
-    @media (min-width: $breakpoint-lg) {
-      padding: 20px 80px;
+    @media (min-width: $breakpoint-2xl) {
+      padding: 14px 144px 15px;
     }
   }
   
@@ -24,7 +24,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
+    gap: 8px;
     width: 100%;
   }
   
@@ -55,7 +55,7 @@
     &.header-logo-mobile {
       display: flex;
       flex: 1;
-      justify-content: center;
+      justify-content: flex-start;
       
       @media (min-width: $breakpoint-lg) {
         display: none;
@@ -122,7 +122,8 @@
     
     @media (min-width: $breakpoint-lg) {
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
+      padding-right: 47px;
     }
     
     .header-nav-links {
@@ -152,8 +153,8 @@
       transition: color $transition-base;
       
       @media (min-width: $breakpoint-lg) {
-        font-size: 16px;
-        padding: 8px 16px;
+        font-size: 14px;
+        padding: 13px 9px;
       }
       
       &:hover {
@@ -173,7 +174,7 @@
     
     .header-dropdown {
       position: absolute;
-      top: 100%;
+      top: 80%;
       left: 0;
       background: $white;
       border: 1px solid $border-light;
@@ -185,16 +186,30 @@
       margin-top: 4px;
       
       .header-dropdown-item {
-        display: block;
+        display: flex;
+        flex-direction: column;
         padding: 10px 16px;
         font-family: $font-family-primary;
-        font-size: 14px;
-        color: $text-primary;
         text-decoration: none;
         transition: background-color $transition-base;
         
         &:hover {
           background-color: $gray-50;
+        }
+
+        .header-dropdown-item-name {
+          font-size: 14px;
+          font-weight: $font-weight-medium;
+          color: $text-primary;
+          margin-bottom: 0;
+        }
+
+        .header-dropdown-item-desc {
+          font-size: 12px;
+          font-weight: $font-weight-normal;
+          color: $text-secondary;
+          line-height: 1.4;
+          margin-top: 4px;
         }
       }
     }
@@ -208,14 +223,14 @@
     flex-shrink: 0;
     
     @media (min-width: $breakpoint-md) {
-      gap: 16px;
+      gap: 10px;
     }
     
     // Desktop actions
     &.header-actions-desktop {
       display: none;
       
-      @media (min-width: $breakpoint-lg) {
+      @media (min-width: 1240px) {
         display: flex;
       }
     }
@@ -225,7 +240,7 @@
       display: flex;
       gap: 12px;
       
-      @media (min-width: $breakpoint-lg) {
+      @media (min-width: 1240px) {
         display: none;
       }
     }
@@ -238,11 +253,11 @@
     .header-lang-button {
       display: flex;
       align-items: center;
-      gap: 6px;
-      padding: 8px 12px;
+      gap: 4px;
+      padding: 6px 8px 6px 4px;
       background: $white;
       border: 1px solid $border-light;
-      border-radius: $border-radius-md;
+      border-radius: 8px;
       cursor: pointer;
       transition: all $transition-base;
       
@@ -252,8 +267,8 @@
     }
     
     .header-lang-icon {
-      width: 16px;
-      height: 16px;
+      width: 24px;
+      height: 24px;
       color: $text-primary;
     }
     
@@ -311,17 +326,20 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 12px;
+      padding: 8px 13px;
       background: $white;
       border: 1px solid $border-light;
-      border-radius: $border-radius-md;
-      min-width: 200px;
-      max-width: 280px;
+      border-radius: 8px;
+      min-width: 240px;
+    }
+    
+    @media (min-width: 1440px) {
+      min-width: 367px;
     }
     
     .header-search-icon {
-      width: 16px;
-      height: 16px;
+      width: 20px;
+      height: 20px;
       color: $text-secondary;
       flex-shrink: 0;
     }
@@ -349,15 +367,16 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 24px;
+      padding: 8px 12px;
       background: $black;
       color: $white;
       font-family: $font-family-primary;
-      font-size: 14px;
-      font-weight: $font-weight-medium;
+      font-size: 13px;
+      font-weight: $font-weight-normal;
       text-decoration: none;
-      border-radius: $border-radius-md;
+      border-radius: 8px;
       transition: all $transition-base;
+      line-height: 20px;
       
       &:hover {
         background: $gray-800;
@@ -393,8 +412,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     padding: 0;
     background: transparent;
     border: 1px solid $border-light;
@@ -424,7 +443,7 @@
     color: $white;
     font-family: $font-family-primary;
     font-size: 14px;
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-semibold;
     text-decoration: none;
     border-radius: $border-radius-md;
     transition: all $transition-base;
@@ -434,7 +453,7 @@
       text-decoration: none;
     }
     
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: 1240px) {
       display: none;
     }
   }
@@ -559,12 +578,10 @@
         padding: 0;
         
         .header-mobile-menu-accordion-item {
-          display: block;
+          display: flex;
+          flex-direction: column;
           padding: 12px 24px 12px 48px;
           font-family: $font-family-primary;
-          font-size: 14px;
-          font-weight: $font-weight-normal;
-          color: $text-secondary;
           text-decoration: none;
           transition: all $transition-base;
           border-bottom: 1px solid $border-light;
@@ -575,8 +592,22 @@
           
           &:hover {
             background-color: $white;
-            color: $text-primary;
             padding-left: 52px;
+          }
+
+          .header-mobile-menu-accordion-item-name {
+            font-size: 14px;
+            font-weight: $font-weight-medium;
+            color: $text-primary;
+            margin-bottom: 0;
+          }
+
+          .header-mobile-menu-accordion-item-desc {
+            font-size: 12px;
+            font-weight: $font-weight-normal;
+            color: $text-secondary;
+            line-height: 1.4;
+            margin-top: 4px;
           }
         }
       }

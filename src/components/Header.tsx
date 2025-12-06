@@ -14,17 +14,42 @@ const Header = () => {
 
   const navigation = [
     { name: "Home", href: "/" },
-    { 
-      name: "About us", 
+    {
+      name: "About us",
       href: "/about",
       hasDropdown: true,
-      items: ["Company", "Team", "History"]
+      items: [
+        {
+          name: "Company",
+        },
+        {
+          name: "Team",
+
+        },
+        {
+          name: "History",
+
+        },
+      ],
     },
-    { 
-      name: "Products", 
+    {
+      name: "Products",
       href: "/products",
       hasDropdown: true,
-      items: ["Category 1", "Category 2", "Category 3"]
+      items: [
+        {
+          name: "Category 1",
+          desc: "This is a short description",
+        },
+        {
+          name: "Category 2",
+          desc: "Brief details about category",
+        },
+        {
+          name: "Category 3",
+          desc: "Category three description goes",
+        },
+      ],
     },
     { name: "Contact", href: "/contact" },
   ];
@@ -36,11 +61,12 @@ const Header = () => {
           {/* Desktop: Left Logo */}
           <div className="header-logo header-logo-desktop">
             <Link href="/" className="flex items-center gap-2">
-              <div className="header-logo-icon">
-                {/* Logo graphic placeholder - replace with actual logo component */}
-                <div className="header-logo-graphic"></div>
-              </div>
-              <span className="header-logo-text">Company Logo</span>
+              <Image
+                src="/images/scaleLogo.png"
+                alt="Scale Logo"
+                width={221}
+                height={45}
+              />
             </Link>
           </div>
 
@@ -68,10 +94,12 @@ const Header = () => {
           {/* Mobile: Center Logo */}
           <div className="header-logo header-logo-mobile">
             <Link href="/" className="flex items-center gap-2">
-              <div className="header-logo-icon">
-                <div className="header-logo-graphic"></div>
-              </div>
-              <span className="header-logo-text">Company Logo</span>
+              <Image
+                src="/images/scaleLogo.png"
+                alt="Scale Logo"
+                width={122}
+                height={25}
+              />
             </Link>
           </div>
 
@@ -81,10 +109,18 @@ const Header = () => {
               {navigation.map((item) => (
                 <div key={item.name} className="header-nav-item">
                   {item.hasDropdown ? (
-                    <div 
+                    <div
                       className="header-nav-link-with-dropdown"
-                      onMouseEnter={() => item.name === "About us" ? setIsAboutOpen(true) : setIsProductsOpen(true)}
-                      onMouseLeave={() => item.name === "About us" ? setIsAboutOpen(false) : setIsProductsOpen(false)}
+                      onMouseEnter={() =>
+                        item.name === "About us"
+                          ? setIsAboutOpen(true)
+                          : setIsProductsOpen(true)
+                      }
+                      onMouseLeave={() =>
+                        item.name === "About us"
+                          ? setIsAboutOpen(false)
+                          : setIsProductsOpen(false)
+                      }
                     >
                       <Link href={item.href} className="header-nav-link">
                         {item.name}
@@ -102,19 +138,30 @@ const Header = () => {
                           />
                         </svg>
                       </Link>
-                      {(item.name === "About us" ? isAboutOpen : isProductsOpen) && (
-                        <div className="header-dropdown">
-                          {item.items?.map((subItem) => (
-                            <Link
-                              key={subItem}
-                              href={`${item.href}/${subItem.toLowerCase().replace(' ', '-')}`}
-                              className="header-dropdown-item"
-                            >
-                              {subItem}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
+                      {(item.name === "About us"
+                        ? isAboutOpen
+                        : isProductsOpen) && (
+                          <div className="header-dropdown">
+                          {item.items?.map((subItem) => {
+                            const itemName = typeof subItem === "string" ? subItem : subItem.name;
+                            const itemDesc = typeof subItem === "object" && "desc" in subItem ? subItem.desc : undefined;
+                            const itemHref = `${item.href}/${itemName.toLowerCase().replace(" ", "-")}`;
+
+                            return (
+                              <Link
+                                key={itemName}
+                                href={itemHref}
+                                className="header-dropdown-item"
+                              >
+                                <span className="header-dropdown-item-name">{itemName}</span>
+                                {itemDesc && (
+                                  <span className="header-dropdown-item-desc">{itemDesc}</span>
+                                )}
+                              </Link>
+                            );
+                          })}
+                          </div>
+                        )}
                     </div>
                   ) : (
                     <Link href={item.href} className="header-nav-link">
@@ -129,7 +176,7 @@ const Header = () => {
           {/* Desktop: Right Actions (Language, Search, CTA) */}
           <div className="header-actions header-actions-desktop">
             {/* Language Selector */}
-            <div 
+            <div
               className="header-lang-selector"
               onMouseEnter={() => setIsLangOpen(true)}
               onMouseLeave={() => setIsLangOpen(false)}
@@ -138,8 +185,8 @@ const Header = () => {
                 <Image
                   src="/icons/globe-alt.svg"
                   alt="Language"
-                  width={16}
-                  height={16}
+                  width={24}
+                  height={24}
                   className="header-lang-icon"
                 />
                 <span className="header-lang-text">EN</span>
@@ -161,7 +208,9 @@ const Header = () => {
                 <div className="header-lang-dropdown">
                   <button className="header-lang-dropdown-item">English</button>
                   <button className="header-lang-dropdown-item">Español</button>
-                  <button className="header-lang-dropdown-item">Français</button>
+                  <button className="header-lang-dropdown-item">
+                    Français
+                  </button>
                 </div>
               )}
             </div>
@@ -170,8 +219,8 @@ const Header = () => {
             <div className="header-search">
               <svg
                 className="header-search-icon"
-                width="16"
-                height="16"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -199,20 +248,12 @@ const Header = () => {
           <div className="header-actions header-actions-mobile">
             {/* Search Icon Button */}
             <button className="header-mobile-search-btn" aria-label="Search">
-              <svg
-                className="header-mobile-search-icon"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="m21 21-4.35-4.35"></path>
-              </svg>
+              <Image
+                src="/icons/search.svg"
+                alt="Scale Logo"
+                width={24}
+                height={24}
+              />
             </button>
 
             {/* Contact Us Button */}
@@ -225,19 +266,25 @@ const Header = () => {
         {/* Mobile Menu Overlay */}
         {isMobileMenuOpen && (
           <>
-            <div 
+            <div
               className="header-mobile-overlay"
               onClick={() => setIsMobileMenuOpen(false)}
             />
-            <div className={`header-mobile-menu ${isMobileMenuOpen ? 'header-mobile-menu-open' : ''}`}>
+            <div
+              className={`header-mobile-menu ${isMobileMenuOpen ? "header-mobile-menu-open" : ""
+                }`}
+            >
               <div className="header-mobile-menu-content">
                 {navigation.map((item) => (
-                  <div key={item.name} className="header-mobile-menu-item-wrapper">
+                  <div
+                    key={item.name}
+                    className="header-mobile-menu-item-wrapper"
+                  >
                     {item.hasDropdown ? (
                       <div className="header-mobile-menu-accordion">
                         <div className="header-mobile-menu-accordion-header">
-                          <Link 
-                            href={item.href} 
+                          <Link
+                            href={item.href}
                             className="header-mobile-menu-accordion-link"
                             onClick={(e) => {
                               // Allow navigation when clicking the link
@@ -260,11 +307,14 @@ const Header = () => {
                             aria-label="Toggle submenu"
                           >
                             <svg
-                              className={`header-mobile-menu-accordion-icon ${
-                                (item.name === "About us" ? isMobileAboutOpen : isMobileProductsOpen) 
-                                  ? 'header-mobile-menu-accordion-icon-open' 
-                                  : ''
-                              }`}
+                              className={`header-mobile-menu-accordion-icon ${(
+                                  item.name === "About us"
+                                    ? isMobileAboutOpen
+                                    : isMobileProductsOpen
+                                )
+                                  ? "header-mobile-menu-accordion-icon-open"
+                                  : ""
+                                }`}
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
@@ -278,20 +328,31 @@ const Header = () => {
                             </svg>
                           </button>
                         </div>
-                        {(item.name === "About us" ? isMobileAboutOpen : isMobileProductsOpen) && (
-                          <div className="header-mobile-menu-accordion-content">
-                            {item.items?.map((subItem) => (
-                              <Link
-                                key={subItem}
-                                href={`${item.href}/${subItem.toLowerCase().replace(' ', '-')}`}
-                                className="header-mobile-menu-accordion-item"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                              >
-                                {subItem}
-                              </Link>
-                            ))}
-                          </div>
-                        )}
+                        {(item.name === "About us"
+                          ? isMobileAboutOpen
+                          : isMobileProductsOpen) && (
+                            <div className="header-mobile-menu-accordion-content">
+                             {item.items?.map((subItem) => {
+                               const itemName = typeof subItem === "string" ? subItem : subItem.name;
+                               const itemDesc = typeof subItem === "object" && "desc" in subItem ? subItem.desc : undefined;
+                               const itemHref = `${item.href}/${itemName.toLowerCase().replace(" ", "-")}`;
+
+                               return (
+                                 <Link
+                                   key={itemName}
+                                   href={itemHref}
+                                   className="header-mobile-menu-accordion-item"
+                                   onClick={() => setIsMobileMenuOpen(false)}
+                                 >
+                                   <span className="header-mobile-menu-accordion-item-name">{itemName}</span>
+                                   {itemDesc && (
+                                     <span className="header-mobile-menu-accordion-item-desc">{itemDesc}</span>
+                                   )}
+                                 </Link>
+                               );
+                             })}
+                            </div>
+                          )}
                       </div>
                     ) : (
                       <Link
