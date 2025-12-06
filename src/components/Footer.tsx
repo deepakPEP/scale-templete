@@ -8,41 +8,59 @@ const Footer = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("EN");
   const [expandedSections, setExpandedSections] = useState<{
     products: boolean;
-    about: boolean;
+    company: boolean;
   }>({
     products: false,
-    about: false,
+    company: false,
   });
 
-  const toggleSection = (section: "products" | "about") => {
+  const toggleSection = (section: "products" | "company") => {
     setExpandedSections((prev) => ({
       ...prev,
       [section]: !prev[section],
     }));
   };
 
-  // Sample product data structure
-  const productLinks = [
-    "Mini Vertical Band Sealing Machine",
-    "Horizontal Band Sealer - Stainless",
-    "Product 3",
-    "Product 4",
+  // Product data structure - three columns, each with three groups
+  const productGroups = [
+    {
+      groupName: "Group1",
+      products: [
+        "Mini Vertical Band Sealing Machine",
+        "Horizontal Band Sealer - Stainless",
+      ],
+    },
+    {
+      groupName: "Group2",
+      products: [
+        "Mini Vertical Band Sealing Machine",
+        "Horizontal Band Sealer - Stainless",
+      ],
+    },
+    {
+      groupName: "Group3",
+      products: [
+        "Mini Vertical Band Sealing Machine",
+        "Horizontal Band Sealer - Stainless",
+      ],
+    },
   ];
 
-  const aboutLinks = [
+  const companyLinks = [
     "About Us",
     "Infrastructure",
     "Quality Assurance",
     "Team",
+    "Contact us",
   ];
 
   return (
     <footer className="footer">
-      <div className="footer__container">
+      <div className="container footer__container">
         {/* Upper Section - Main Content */}
-        <div className="footer__main">
+        <div className="row footer__main">
           {/* Left Column - Company Information */}
-          <div className="footer__company">
+          <div className="col-12 col-lg-4 footer__company">
             <div className="footer__logo-section">
               <div className="footer__logo">
                 <svg
@@ -66,13 +84,13 @@ const Footer = () => {
                   />
                 </svg>
               </div>
-              <h2 className="footer__company-name">Pectra Plast</h2>
+              <h2 className="footer__company-name">Company Logo</h2>
             </div>
 
             <p className="footer__description">
-              Leading manufacturer and exporter of modular belts, slat chains,
-              and conveyor components. Serving industries worldwide with
-              innovative material handling solutions.
+              Leading manufacturer and exporter of modular belts, sla and
+              conveyor components. Serving industries worldwide innovative
+              material handling solutions.
             </p>
 
             {/* Contact Information */}
@@ -126,7 +144,7 @@ const Footer = () => {
                 </svg>
                 <div className="footer__contact-phone-wrapper">
                   <p className="footer__contact-text">
-                    {showPhoneNumber ? "+91 12345 67890" : "+91 9**** ****0"}
+                    {showPhoneNumber ? "+91 12345 67890" : "+91 ***** ****0"}
                   </p>
                   <button
                     className="btn-view-number"
@@ -362,9 +380,51 @@ const Footer = () => {
           </div>
 
           {/* Navigation Sections - Mobile Accordion, Desktop Links */}
-          <div className="footer__navigation">
-            {/* Products Section */}
-            <div className="footer__nav-section">
+          <div className="col-12 col-lg-8 footer__navigation">
+            <div className="row">
+              {/* Company Section */}
+              <div className="col-12 col-lg-3 footer__nav-section">
+              <button
+                className="footer__nav-toggle"
+                onClick={() => toggleSection("company")}
+                aria-expanded={expandedSections.company}
+              >
+                <h3 className="footer__links-heading">Company</h3>
+                <svg
+                  className={`footer__toggle-icon ${
+                    expandedSections.company ? "footer__toggle-icon--open" : ""
+                  }`}
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10 5V15M5 10H15"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </button>
+              <div
+                className={`footer__nav-content ${
+                  expandedSections.company ? "footer__nav-content--open" : ""
+                }`}
+              >
+                <ul className="footer__links-list">
+                  {companyLinks.map((link, index) => (
+                    <li key={index}>
+                      <a href="#">{link}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              </div>
+
+              {/* Products Section - Three Columns */}
+              <div className="col-12 col-lg-9 footer__nav-section footer__nav-section--products">
               <button
                 className="footer__nav-toggle"
                 onClick={() => toggleSection("products")}
@@ -394,62 +454,32 @@ const Footer = () => {
                   expandedSections.products ? "footer__nav-content--open" : ""
                 }`}
               >
-                <ul className="footer__links-list">
-                  {productLinks.map((product, index) => (
-                    <li key={index}>
-                      <a href="#">{product}</a>
-                    </li>
+                <div className="row footer__products-columns">
+                  {/* Three columns, each with three groups */}
+                  {[1, 2, 3].map((columnIndex) => (
+                    <div key={columnIndex} className="col-12 col-lg-4 footer__products-column">
+                      {productGroups.map((group, groupIndex) => (
+                        <div
+                          key={groupIndex}
+                          className="footer__products-group"
+                        >
+                          <h4 className="footer__products-group-title">
+                            {group.groupName}
+                          </h4>
+                          <ul className="footer__links-list">
+                            {group.products.map((product, productIndex) => (
+                              <li key={productIndex}>
+                                <a href="#">{product}</a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
-            </div>
-
-            {/* About Us Section */}
-            <div className="footer__nav-section">
-              <button
-                className="footer__nav-toggle"
-                onClick={() => toggleSection("about")}
-                aria-expanded={expandedSections.about}
-              >
-                <h3 className="footer__links-heading">About us</h3>
-                <svg
-                  className={`footer__toggle-icon ${
-                    expandedSections.about ? "footer__toggle-icon--open" : ""
-                  }`}
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10 5V15M5 10H15"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </button>
-              <div
-                className={`footer__nav-content ${
-                  expandedSections.about ? "footer__nav-content--open" : ""
-                }`}
-              >
-                <ul className="footer__links-list">
-                  {aboutLinks.map((link, index) => (
-                    <li key={index}>
-                      <a href="#">{link}</a>
-                    </li>
-                  ))}
-                </ul>
               </div>
-            </div>
-
-            {/* Contact Us - Simple Link */}
-            <div className="footer__nav-section footer__nav-section--simple">
-              <a href="#" className="footer__contact-link">
-                Contact us
-              </a>
             </div>
           </div>
         </div>
@@ -576,13 +606,14 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="footer__bottom">
-          <div className="footer__bottom-left">
-            <p className="footer__copyright">
-              © {currentYear} Spectra Plast. All rights reserved.
-            </p>
-          </div>
-          <div className="footer__bottom-right">
+        <div className="container footer__bottom">
+          <div className="row align-items-center">
+            <div className="col-12 col-lg-4 footer__bottom-left">
+              <p className="footer__copyright">
+                © {currentYear} Spectra Plast. All rights reserved.
+              </p>
+            </div>
+            <div className="col-12 col-lg-4 footer__bottom-center">
             <button
               className="btn-language-selector"
               onClick={() => {
@@ -628,11 +659,14 @@ const Footer = () => {
                 />
               </svg>
             </button>
-            <div className="footer__legal-links">
+            </div>
+            <div className="col-12 col-lg-4 footer__bottom-right">
+              <div className="footer__legal-links">
               <span>© {currentYear} by Business Name. All Rights Reserved.</span>
               <a href="#">Privacy Policy</a>
               <span>|</span>
               <a href="#">Terms of Use</a>
+              </div>
             </div>
           </div>
         </div>

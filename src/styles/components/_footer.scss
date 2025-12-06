@@ -7,27 +7,21 @@
   width: 100%;
 
   &__container {
-    width: 100%;
+    max-width: 1920px;
     margin: 0 auto;
-    padding: 0;
-
-    @media (min-width: 1920px) {
-      max-width: 1920px;
+    
+    // Override Bootstrap container padding if needed
+    @media (min-width: $breakpoint-lg) {
+      padding-left: 72px;
+      padding-right: 72px;
     }
   }
 
   &__main {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
     padding: 32px 16px;
 
-    @media (min-width: 1920px) {
-      flex-direction: row;
-      gap: 60px;
-      padding: 64px 80px;
-      max-width: 1920px;
-      margin: 0 auto;
+    @media (min-width: 1280px) {
+      padding: 100px 72px;
     }
   }
 
@@ -40,8 +34,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     margin-bottom: 24px;
 
-    @media (min-width: 1920px) {
-      flex: 1.5;
+    @media (min-width: $breakpoint-lg) {
       border-bottom: none;
       margin-bottom: 0;
       padding-bottom: 0;
@@ -74,6 +67,10 @@
     color: #cccccc;
     margin: 0;
     font-weight: 400;
+
+    @media (min-width: $breakpoint-lg) {
+      width: 75%;
+    }
   }
 
   // Contact Section
@@ -81,6 +78,10 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @media (min-width: $breakpoint-lg) {
+      width: 80%;
+    }
   }
 
   &__contact-item {
@@ -152,7 +153,7 @@
     gap: 12px;
     width: 100%;
 
-    @media (min-width: 1920px) {
+   @media (min-width: $breakpoint-lg) {
       flex-direction: row;
       gap: 12px;
     }
@@ -160,17 +161,11 @@
 
   // Navigation Section (Mobile Accordion)
   &__navigation {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 24px;
     margin-bottom: 24px;
 
-    @media (min-width: 1920px) {
-      flex-direction: row;
-      gap: 40px;
-      flex: 1;
+    @media (min-width: $breakpoint-lg) {
       border-bottom: none;
       padding-bottom: 0;
       margin-bottom: 0;
@@ -192,8 +187,11 @@
       padding: 16px 0 0;
     }
 
-    @media (min-width: 1920px) {
-      flex: 1;
+    &--products {
+      // Bootstrap grid handles sizing - no additional styles needed
+    }
+
+    @media (min-width: $breakpoint-lg) {
       border-bottom: none;
       padding: 0;
     }
@@ -210,9 +208,10 @@
     cursor: pointer;
     text-align: left;
 
-    @media (min-width: 1920px) {
+   @media (min-width: $breakpoint-lg) {
       pointer-events: none;
       cursor: default;
+      margin-bottom: 20px;
     }
   }
 
@@ -224,7 +223,7 @@
       transform: rotate(45deg);
     }
 
-    @media (min-width: 1920px) {
+   @media (min-width: $breakpoint-lg) {
       display: none;
     }
   }
@@ -240,10 +239,10 @@
       padding-top: 16px;
     }
 
-    @media (min-width: 1920px) {
+   @media (min-width: $breakpoint-lg) {
       max-height: none;
       overflow: visible;
-      padding-top: 20px;
+      padding-top: 0;
     }
   }
 
@@ -263,7 +262,7 @@
   &__links-column {
     display: none;
 
-    @media (min-width: 1920px) {
+   @media (min-width: $breakpoint-lg) {
       display: flex;
       flex-direction: column;
       gap: 20px;
@@ -304,18 +303,24 @@
     }
   }
 
-  // Products Group
+  &__products-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  // Products Grou
   &__products-group {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
   }
 
   &__products-group-title {
     font-size: 14px;
     font-weight: 700;
     color: $white;
-    margin: 0;
+    margin: 0 0 8px 0;
     font-family: $font-family-primary;
   }
 
@@ -326,7 +331,7 @@
     justify-content: flex-end;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
-    @media (min-width: 1920px) {
+   @media (min-width: $breakpoint-lg) {
       display: none; // Hide on desktop, show in company section instead
     }
   }
@@ -335,23 +340,31 @@
   &__bottom {
     background-color: #222222;
     padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
 
-    @media (min-width: 1920px) {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+    @media (min-width: $breakpoint-lg) {
       padding: 20px 80px;
-      max-width: 1920px;
-      margin: 0 auto;
     }
   }
 
   &__bottom-left {
     display: flex;
     align-items: center;
+    margin-bottom: 16px;
+
+    @media (min-width: $breakpoint-lg) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__bottom-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+
+    @media (min-width: $breakpoint-lg) {
+      margin-bottom: 0;
+    }
   }
 
   &__bottom-right {
