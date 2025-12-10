@@ -3,108 +3,107 @@
 import React from "react";
 import Image from "next/image";
 
-interface WhyUsProps {
+interface industryProps {
   className?: string;
 }
 
-const Whyus: React.FC<WhyUsProps> = ({ className = "" }) => {
+const industryWeserve: React.FC<industryProps> = ({ className = "" }) => {
   return (
-    <section className={`whyus-section ${className}`}>
-      <div className="whyus-section__container">
-        <div className="whyus-section--overview">
-          <h3>Why us</h3>
+    <section className={`industryWeserve ${className}`}>
+      <div className="industryWeserve__container">
+        <div className="industryWeserve--overview">
+          <h3>Industry we serve</h3>
           <p>
               Manufacturer & Exporter of Modular belts, Slat Chains and a complete range of conveyor components.
           </p>
         </div>
-        <div className="whyus-section--feature">
-          <div className="whyus-section--feature-item">
+        <div className="industryWeserve--feature">
+          <div className="industryWeserve--feature-item">
             <Image
-              src="/images/starImage.png"
+              src="/icons/industry1.svg"
               alt="Business Growth Illustration"
               width={42}
               height={42}
               className="overview-section__image"
             />
-            <h3>Pointer 1</h3>
-            <p>Small Short description goes here to lorem ipusm this is dummy.</p>
+            <h3>Industry Name</h3>
           </div>
-          <div className="whyus-section--feature-item">
+          <div className="industryWeserve--feature-item">
             <Image
-              src="/images/starImage.png"
+              src="/icons/industry2.svg"
               alt="Business Growth Illustration"
               width={42}
               height={42}
               className="overview-section__image"
             />
             <h3>Pointer 2</h3>
-            <p>Small Short description goes here to lorem ipusm this is dummy.</p>
+            
           </div>
-          <div className="whyus-section--feature-item">
+          <div className="industryWeserve--feature-item">
             <Image
-              src="/images/starImage.png"
+              src="/icons/industry3.svg"
               alt="Business Growth Illustration"
               width={42}
               height={42}
               className="overview-section__image"
             />
             <h3>Pointer 3</h3>
-            <p>Small Short description goes here to lorem ipusm this is dummy.</p>
+            
           </div>
-          <div className="whyus-section--feature-item">
+          <div className="industryWeserve--feature-item">
             <Image
-              src="/images/starImage.png"
+              src="/icons/industry4.svg"
               alt="Business Growth Illustration"
               width={42}
               height={42}
               className="overview-section__image"
             />
             <h3>Pointer 4</h3>
-            <p>Small Short description goes here to lorem ipusm this is dummy.</p>
+            
           </div>
-          <div className="whyus-section--feature-item">
+          <div className="industryWeserve--feature-item">
             <Image
-              src="/images/starImage.png"
+              src="/icons/industry5.svg"
               alt="Business Growth Illustration"
               width={42}
               height={42}
               className="overview-section__image"
             />
             <h3>Pointer 5</h3>
-            <p>Small Short description goes here to lorem ipusm this is dummy.</p>
+            
           </div>
-          <div className="whyus-section--feature-item">
+          <div className="industryWeserve--feature-item">
             <Image
-              src="/images/starImage.png"
+              src="/icons/industry6.svg"
               alt="Business Growth Illustration"
               width={42}
               height={42}
               className="overview-section__image"
             />
             <h3>Pointer 6</h3>
-            <p>Small Short description goes here to lorem ipusm this is dummy.</p>
+            
           </div>
-          <div className="whyus-section--feature-item">
+          <div className="industryWeserve--feature-item">
             <Image
-              src="/images/starImage.png"
+              src="/icons/industry7.svg"
               alt="Business Growth Illustration"
               width={42}
               height={42}
               className="overview-section__image"
             />
             <h3>Pointer 7</h3>
-            <p>Small Short description goes here to lorem ipusm this is dummy.</p>
+            
           </div>
-          <div className="whyus-section--feature-item">
+          <div className="industryWeserve--feature-item">
             <Image
-              src="/images/starImage.png"
+              src="/icons/industry8.svg"
               alt="Business Growth Illustration"
               width={42}
               height={42}
               className="overview-section__image"
             />
             <h3>Pointer 8</h3>
-            <p>Small Short description goes here to lorem ipusm this is dummy.</p>
+            
           </div>
         </div>
       </div>
@@ -112,4 +111,4 @@ const Whyus: React.FC<WhyUsProps> = ({ className = "" }) => {
   );
 };
 
-export default Whyus;
+export default industryWeserve;

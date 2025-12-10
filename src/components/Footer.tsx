@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -56,35 +58,22 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <div className="container footer__container">
+      <div className="footer__container">
         {/* Upper Section - Main Content */}
-        <div className="row footer__main">
+        <div className="footer__main">
           {/* Left Column - Company Information */}
-          <div className="col-12 col-lg-4 footer__company">
+          <div className="footer__company">
             <div className="footer__logo-section">
               <div className="footer__logo">
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M20 5L35 12V28L20 35L5 28V12L20 5Z"
-                    stroke="white"
-                    strokeWidth="2"
-                    fill="none"
+                <Link href="/" className="flex items-center gap-2">
+                  <Image
+                    src="/images/logoWhite.png"
+                    alt="Scale Logo"
+                    width={221}
+                    height={45}
                   />
-                  <path
-                    d="M20 15L28 19V26L20 30L12 26V19L20 15Z"
-                    stroke="white"
-                    strokeWidth="2"
-                    fill="none"
-                  />
-                </svg>
+                </Link>
               </div>
-              <h2 className="footer__company-name">Company Logo</h2>
             </div>
 
             <p className="footer__description">
@@ -95,30 +84,18 @@ const Footer = () => {
 
             {/* Contact Information */}
             <div className="footer__contact">
+              <h6 className="footer__contact-label">
+                    Spectra Plast Pvt. Ltd.
+              </h6>
               {/* Address */}
               <div className="footer__contact-item">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M10 10C11.3807 10 12.5 8.88071 12.5 7.5C12.5 6.11929 11.3807 5 10 5C8.61929 5 7.5 6.11929 7.5 7.5C7.5 8.88071 8.61929 10 10 10Z"
-                    stroke="white"
-                    strokeWidth="1.5"
-                  />
-                  <path
-                    d="M10 17.5C13.5 13.5 16.25 10.9625 16.25 8.125C16.25 5.2875 13.9625 3 10 3C6.0375 3 3.75 5.2875 3.75 8.125C3.75 10.9625 6.5 13.5 10 17.5Z"
-                    stroke="white"
-                    strokeWidth="1.5"
-                  />
-                </svg>
+                <Image
+                    src="/images/location.png"
+                    alt="location"
+                    width={24}
+                    height={24}
+                />
                 <div>
-                  <strong className="footer__contact-label">
-                    Spectra Plast Pvt. Ltd.
-                  </strong>
                   <p className="footer__contact-text">
                     No. 1A, Buddha 4th Street, Ramakrishnapuram, Ganapathy,
                     Coimbatore - 641006, India
@@ -128,26 +105,18 @@ const Footer = () => {
 
               {/* Phone */}
               <div className="footer__contact-item">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M17.5 14.375V16.875C17.5 17.3723 17.3025 17.8492 16.9478 18.2038C16.5932 18.5585 16.1163 18.756 15.619 18.756C6.991 18.756 0 11.765 0 3.137C0 2.63973 0.197544 2.16281 0.552228 1.80813C0.906913 1.45344 1.38383 1.2559 1.881 1.2559H4.381C4.87827 1.2559 5.35519 1.45344 5.70987 1.80813C6.06456 2.16281 6.262 2.63973 6.262 3.137C6.262 4.131 6.456 5.1 6.831 5.994C6.978 6.328 7.05 6.694 7.038 7.063C7.025 7.432 6.929 7.791 6.756 8.113L5.494 10.637C6.881 13.237 9.137 15.494 11.737 16.881L14.262 15.619C14.584 15.446 14.943 15.35 15.312 15.338C15.681 15.325 16.047 15.397 16.381 15.544C17.275 15.919 18.244 16.113 19.238 16.113C19.7353 16.113 20.2122 16.3105 20.5669 16.6652C20.9216 17.0199 21.119 17.4968 21.119 17.994L17.5 14.375Z"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    fill="none"
-                  />
-                </svg>
+                <Image
+                    src="/images/call.png"
+                    alt="Scale Logo"
+                    width={24}
+                    height={24}
+                />
                 <div className="footer__contact-phone-wrapper">
                   <p className="footer__contact-text">
                     {showPhoneNumber ? "+91 12345 67890" : "+91 ***** ****0"}
                   </p>
                   <button
-                    className="btn-view-number"
+                    className="btn-view"
                     onClick={() => setShowPhoneNumber(!showPhoneNumber)}
                   >
                     <svg
@@ -188,20 +157,12 @@ const Footer = () => {
 
               {/* Email */}
               <div className="footer__contact-item">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M2.5 5L10 10L17.5 5M2.5 5H17.5M2.5 5V15H17.5V5"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    fill="none"
-                  />
-                </svg>
+                <Image
+                    src="/images/mail.png"
+                    alt="Scale Logo"
+                    width={24}
+                    height={24}
+                />
                 <p className="footer__contact-text">Email@company.com</p>
               </div>
             </div>
@@ -330,7 +291,7 @@ const Footer = () => {
 
             {/* Action Buttons */}
             <div className="footer__actions">
-              <button className="btn-footer-action">
+              <button className="btn-footer">
                 <svg
                   width="20"
                   height="20"
@@ -359,7 +320,7 @@ const Footer = () => {
                 </svg>
                 Send Message
               </button>
-              <button className="btn-footer-action">
+              <button className="btn-footer">
                 <svg
                   width="20"
                   height="20"
@@ -380,10 +341,10 @@ const Footer = () => {
           </div>
 
           {/* Navigation Sections - Mobile Accordion, Desktop Links */}
-          <div className="col-12 col-lg-8 footer__navigation">
-            <div className="row">
+          <div className="footer__navigation">
+            <div className="footer__nav-row">
               {/* Company Section */}
-              <div className="col-12 col-lg-3 footer__nav-section">
+              <div className="footer__nav-section">
               <button
                 className="footer__nav-toggle"
                 onClick={() => toggleSection("company")}
@@ -424,7 +385,7 @@ const Footer = () => {
               </div>
 
               {/* Products Section - Three Columns */}
-              <div className="col-12 col-lg-9 footer__nav-section footer__nav-section--products">
+              <div className="footer__nav-section footer__nav-section--products">
               <button
                 className="footer__nav-toggle"
                 onClick={() => toggleSection("products")}
@@ -454,10 +415,10 @@ const Footer = () => {
                   expandedSections.products ? "footer__nav-content--open" : ""
                 }`}
               >
-                <div className="row footer__products-columns">
+                <div className="footer__products-columns">
                   {/* Three columns, each with three groups */}
                   {[1, 2, 3].map((columnIndex) => (
-                    <div key={columnIndex} className="col-12 col-lg-4 footer__products-column">
+                    <div key={columnIndex} className="footer__products-column">
                       {productGroups.map((group, groupIndex) => (
                         <div
                           key={groupIndex}
@@ -606,70 +567,65 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="container footer__bottom">
-          <div className="row align-items-center">
-            <div className="col-12 col-lg-4 footer__bottom-left">
+      <div className="footer__bottom">
+        <div className="footer__bottom-row">
+
+          {/* Left + Center merged here */}
+          <div className="footer__bottom-left-center">
+            <div className="d-flex align-items-center flex-wrap gap-3">
+
               <p className="footer__copyright">
                 © {currentYear} Spectra Plast. All rights reserved.
               </p>
-            </div>
-            <div className="col-12 col-lg-4 footer__bottom-center">
-            <button
-              className="btn-language-selector"
-              onClick={() => {
-                /* Handle language selection */
-              }}
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+
+              <button
+                className="btn-language-selector"
+                onClick={() => {
+                  /* Handle language selection */
+                }}
               >
-                <circle
-                  cx="8"
-                  cy="8"
-                  r="7"
-                  stroke="white"
-                  strokeWidth="1.5"
+                <Image
+                  src="/images/world-white.png"
+                  alt="Language"
+                  width={24}
+                  height={24}
+                  className="header-lang-icon"
+                />
+
+                {selectedLanguage}
+
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
                   fill="none"
-                />
-                <path
-                  d="M8 1C10.5 3.5 11.5 6 11.5 8C11.5 10 10.5 12.5 8 15M8 1C5.5 3.5 4.5 6 4.5 8C4.5 10 5.5 12.5 8 15M8 1C4.5 1 1 4.5 1 8C1 11.5 4.5 15 8 15"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  fill="none"
-                />
-              </svg>
-              {selectedLanguage}
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M4 6L8 10L12 6"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4 6L8 10L12 6"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+
             </div>
-            <div className="col-12 col-lg-4 footer__bottom-right">
-              <div className="footer__legal-links">
+          </div>
+
+          {/* Right column unchanged */}
+          <div className="footer__bottom-right">
+            <div className="footer__legal-links">
               <span>© {currentYear} by Business Name. All Rights Reserved.</span>
               <a href="#">Privacy Policy</a>
               <span>|</span>
               <a href="#">Terms of Use</a>
-              </div>
             </div>
           </div>
+
         </div>
+      </div>
       </div>
     </footer>
   );

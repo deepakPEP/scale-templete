@@ -1,12 +1,16 @@
 @use "../variables" as *;
 
 .testimonial-section {
-  background: #f9fafb;
+  background: #FAFAFA;
   padding: 60px 16px;
   position: relative;
 
   @media (min-width: $breakpoint-lg) {
-    padding: 80px 80px 100px;
+    padding: 40px;
+  }
+
+  @media (min-width: $breakpoint-2xl) {
+    padding: 87px 144px;
   }
 
   &__container {

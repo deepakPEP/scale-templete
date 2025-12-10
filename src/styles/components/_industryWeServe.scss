@@ -1,6 +1,6 @@
 @use "../variables" as *;
 
-.whyus-section {
+.industryWeserve {
   padding: 16px;
   background: #FFFFFF;
   position: relative;
@@ -72,37 +72,38 @@
     }
 
     &-item {
-      background: #ffffff;
+      background: #F6F7F5;
       padding: 16px;
       border-radius: 8px;
       box-shadow: 0px 1px 2px 0px #0000000D;
       border: 1px solid #E2E6E9;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
 
       @media (min-width: $breakpoint-md) {
         padding: 32px;
       }
 
       img {
-        margin-bottom: 12px;
         width: 24px;
         height: 24px;
         @media (min-width: $breakpoint-md) {
           width: 48px;
           height: 48px;
-          margin-bottom: 24px;
         }
       }
 
       h3 {
         font-size: 14px;
-        font-weight: $font-weight-semibold;
+        font-weight: 700;
         font-family: $font-family-secondary;
         line-height: 28px;
         color: $text-primary;
-        margin: 0 0 12px 0;
+        margin: 0;
 
         @media (min-width: $breakpoint-md) {
-          font-size: 18px;
+          font-size: 20px;
         }
       }
 

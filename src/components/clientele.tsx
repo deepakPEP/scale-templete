@@ -149,6 +149,7 @@ const Clientele: React.FC<ClienteleProps> = ({ className = "" }) => {
         <div className="clientele-section__slider">
           <div className="clientele-section__header">
             <h2 className="clientele-section__heading">Clientele</h2>
+            <p className="clientele-section__desc">Find and connect with trusted suppliers worldwide. Our platform streamlines sourcing, ensuring the perfect match for your needs—from inquiries to orders.</p>
           </div>
           <Slider
             key={`clientele-slider-${windowWidth}`}

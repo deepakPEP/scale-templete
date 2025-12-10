@@ -2,6 +2,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -54,15 +55,15 @@ const HeroBanner: React.FC<HeroBannerProps> = ({ className = '' }) => {
       <Slider {...settings}>
         {bannerData.map((slide) => (
           <div key={slide.id} className="hero-banner__slide">
-            {/* Gradient Background */}
-            <div className="hero-banner__background" />
-
-            {/* Abstract Shapes on Right */}
-            <div className="hero-banner__shapes">
-              <div className="hero-banner__shape hero-banner__shape--1" />
-              <div className="hero-banner__shape hero-banner__shape--2" />
-              <div className="hero-banner__shape hero-banner__shape--3" />
-              <div className="hero-banner__shape hero-banner__shape--4" />
+            <div className="hero-banner__background">
+              <Image
+              src="/images/scaleimg.png"
+              alt="Business Growth Illustration"
+              width={42}
+              height={42}
+              unoptimized
+              className="overview-section__image"
+            />
             </div>
 
             {/* Content */}
@@ -72,21 +73,13 @@ const HeroBanner: React.FC<HeroBannerProps> = ({ className = '' }) => {
                 <p className="hero-banner__description">{slide.description}</p>
                 <button className="hero-banner__button">
                   View Products
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7.5 5L12.5 10L7.5 15"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <Image
+                    src="/icons/arrowleftline-black.png"
+                    alt="Scale Growth"
+                    width={18}
+                    height={18}
+                    className="overview-section__image"
+                  />
                 </button>
               </div>
             </div>
@@ -105,21 +98,13 @@ const NextArrow = (props: any) => {
       className={`${className} hero-banner__arrow hero-banner__arrow--next`}
       onClick={onClick}
     >
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M9 18L15 12L9 6"
-          stroke="white"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+      <Image
+        src="/icons/whiteArrowright.svg"
+        alt="arrow"
+        width={20}
+        height={20}
+        className="overview-section__image"
+      />
     </div>
   );
 };
@@ -131,21 +116,13 @@ const PrevArrow = (props: any) => {
       className={`${className} hero-banner__arrow hero-banner__arrow--prev`}
       onClick={onClick}
     >
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M15 18L9 12L15 6"
-          stroke="white"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
+      <Image
+        src="/icons/whiteArrowLeft.svg"
+        alt="arrow"
+        width={20}
+        height={20}
+        className="overview-section__image"
+      />
     </div>
   );
 };

@@ -38,11 +38,7 @@ const Infrastructure: React.FC<InfrastructureProps> = ({ className = "" }) => {
           <div className="infrastructure-section__content">
             <h2 className="infrastructure-section__heading">Infrastructure</h2>
             <p className="infrastructure-section__description">
-              Use this space to promote the business, its products or its
-              services. Help people become familiar with the business and its
-              offerings, creating a sense of connection and trust. Focus on what
-              makes the business unique and how users can benefit from choosing
-              it.
+              Use this space to promote the business, its products or its services. Help people become familiar with the business and its offerings, creating a sense of connection and trust. Focus on what makes the business unique and how users can benefit from choosing it.
             </p>
           </div>
           <div className="infrastructure-section__grid">
@@ -55,8 +51,7 @@ const Infrastructure: React.FC<InfrastructureProps> = ({ className = "" }) => {
                 className="infrastructure-section__image"
               />
               <h3>Capacity</h3>
-              <span>Distributor / Wholesaler,</span>
-              <span>Exporter, Importer</span>
+              <span>3,000 MT to 45,000 MT.</span>
             </div>
             <div className="infrastructure-section__grid-items">
               <Image
@@ -66,9 +61,8 @@ const Infrastructure: React.FC<InfrastructureProps> = ({ className = "" }) => {
                 height={32}
                 className="infrastructure-section__image"
               />
-              <h3>Capacity</h3>
-              <span>Distributor / Wholesaler,</span>
-              <span>Exporter, Importer</span>
+              <h3>Factory Size</h3>
+              <span>1000 square feet</span>
             </div>
             <div className="infrastructure-section__grid-items">
               <Image
@@ -78,9 +72,8 @@ const Infrastructure: React.FC<InfrastructureProps> = ({ className = "" }) => {
                 height={32}
                 className="infrastructure-section__image"
               />
-              <h3>Capacity</h3>
-              <span>Distributor / Wholesaler,</span>
-              <span>Exporter, Importer</span>
+              <h3>No. Of Employees</h3>
+              <span>501 to 1000 People</span>
             </div>
             <div className="infrastructure-section__grid-items">
               <Image
@@ -90,15 +83,10 @@ const Infrastructure: React.FC<InfrastructureProps> = ({ className = "" }) => {
                 height={32}
                 className="infrastructure-section__image"
               />
-              <h3>Capacity</h3>
-              <span>Distributor / Wholesaler,</span>
-              <span>Exporter, Importer</span>
+              <h3>Monthly Production Capacity</h3>
+              <span>-</span>
             </div>
-          </div>
-          <div>
-            <button className="btn btn-outline">Know More</button>
-          </div>
-          
+          </div>          
         </div>
 
         <div className="infrastructure-section__right">

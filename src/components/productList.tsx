@@ -201,32 +201,7 @@ const ProductList: React.FC<ProductListProps> = ({ className = "", maxItems = 6 
             >
               <div className="product-card__image-container">
                 <div className="product-card__image-placeholder">
-                  <svg
-                    width="120"
-                    height="120"
-                    viewBox="0 0 120 120"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="15"
-                      y="15"
-                      width="90"
-                      height="90"
-                      rx="8"
-                      stroke="#e0e0e0"
-                      strokeWidth="2"
-                      fill="none"
-                    />
-                    <path
-                      d="M30 60L40 70L70 40"
-                      stroke="#e0e0e0"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <circle cx="60" cy="40" r="15" fill="#f0f0f0" />
-                  </svg>
+                  <Image src="/images/product-placeholder.png" alt="product placeholder" unoptimized width={120} height={120} />
                 </div>
               </div>
               <div className="product-card__content">
@@ -248,6 +223,7 @@ const ProductList: React.FC<ProductListProps> = ({ className = "", maxItems = 6 
                 </div>
                 <div className="product-card__actions">
                   <button className="product-card__button product-card__button--chat">
+                    Chat now
                     <svg
                       width="16"
                       height="16"
@@ -268,7 +244,6 @@ const ProductList: React.FC<ProductListProps> = ({ className = "", maxItems = 6 
                         strokeLinecap="round"
                       />
                     </svg>
-                    Chat now
                   </button>
                   <button className="product-card__button product-card__button--quote">
                     Request for Quote

@@ -5,23 +5,32 @@
   background-color: #333333;
   color: $white;
   width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
 
   &__container {
     max-width: 1920px;
     margin: 0 auto;
-    
-    // Override Bootstrap container padding if needed
-    @media (min-width: $breakpoint-lg) {
-      padding-left: 72px;
-      padding-right: 72px;
-    }
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0px;
   }
 
   &__main {
     padding: 32px 16px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 
     @media (min-width: 1280px) {
-      padding: 100px 72px;
+      padding: 80px 72px;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      flex-direction: row;
+      gap: 60px;
     }
   }
 
@@ -29,15 +38,11 @@
   &__company {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 24px;
+    width: 100%;
 
     @media (min-width: $breakpoint-lg) {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
+      flex: 0 0 33.333333%;
+      max-width: 33.333333%;
     }
   }
 
@@ -45,6 +50,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    padding-bottom: 27px;
   }
 
   &__logo {
@@ -63,10 +69,11 @@
 
   &__description {
     font-size: 14px;
-    line-height: 24px;
-    color: #cccccc;
+    line-height: 160%;
+    color: #FFFFFF;
     margin: 0;
     font-weight: 400;
+    padding-bottom: 17px;
 
     @media (min-width: $breakpoint-lg) {
       width: 75%;
@@ -77,10 +84,12 @@
   &__contact {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 8px;
+    padding-bottom: 30px;
 
     @media (min-width: $breakpoint-lg) {
       width: 80%;
+      padding-bottom: 0px;
     }
   }
 
@@ -105,8 +114,9 @@
 
   &__contact-text {
     font-size: 14px;
-    line-height: 20px;
-    color: #cccccc;
+    line-height: 160%;
+    font-weight: 400;
+    color: #FFFFFF;
     margin: 0;
   }
 
@@ -119,9 +129,13 @@
 
   // Social Media
   &__social {
+    display: none;
+    @media (min-width: $breakpoint-lg) {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    flex-direction: row;
+    gap: 8px;
+    padding: 8px 0 43px;
+  }
   }
 
   &__social-label {
@@ -131,7 +145,7 @@
 
   &__social-icons {
     display: flex;
-    gap: 16px;
+    gap: 6px;
     align-items: center;
 
     a {
@@ -139,6 +153,8 @@
       align-items: center;
       justify-content: center;
       transition: opacity 0.2s;
+      width: 22px;
+      height: 22px;
 
       &:hover {
         opacity: 0.7;
@@ -162,13 +178,25 @@
   // Navigation Section (Mobile Accordion)
   &__navigation {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 24px;
-    margin-bottom: 24px;
+    width: 100%;
+    box-sizing: border-box;
 
     @media (min-width: $breakpoint-lg) {
       border-bottom: none;
-      padding-bottom: 0;
-      margin-bottom: 0;
+      flex: 0 0 66.666667%;
+      max-width: 66.666667%;
+    }
+  }
+
+  &__nav-row {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+
+    @media (min-width: $breakpoint-lg) {
+      flex-direction: row;
+      gap: 0;
     }
   }
 
@@ -177,6 +205,7 @@
     flex-direction: column;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding: 16px 0;
+    width: 100%;
 
     &:last-of-type {
       border-bottom: none;
@@ -188,12 +217,20 @@
     }
 
     &--products {
-      // Bootstrap grid handles sizing - no additional styles needed
+      @media (min-width: $breakpoint-lg) {
+        flex: 0 0 75%;
+        max-width: 75%;
+      }
     }
 
     @media (min-width: $breakpoint-lg) {
       border-bottom: none;
-      padding: 0;
+      padding: 0 24px 0 0;
+      
+      &:first-child {
+        flex: 0 0 25%;
+        max-width: 25%;
+      }
     }
   }
 
@@ -307,6 +344,21 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  &__products-columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+
+    @media (min-width: $breakpoint-lg) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
   }
 
   // Products Grou
@@ -328,8 +380,12 @@
   &__social-bottom {
     padding: 24px 16px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow-x: hidden;
 
    @media (min-width: $breakpoint-lg) {
       display: none; // Hide on desktop, show in company section instead
@@ -338,11 +394,31 @@
 
   // Bottom Bar
   &__bottom {
-    background-color: #222222;
+    border-top: 1px solid #D0D0D01A;
+    max-width: 1920px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
     padding: 16px;
 
     @media (min-width: $breakpoint-lg) {
-      padding: 20px 80px;
+      padding: 31px 102px 31px 80px;
+    }
+  }
+
+  &__bottom-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+
+    @media (min-width: $breakpoint-lg) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
     }
   }
 
@@ -367,23 +443,44 @@
     }
   }
 
+  &__bottom-left-center {
+    display: none;
+    @media (min-width: $breakpoint-lg) {
+      width: auto;
+      flex: 0 0 66.666667%;
+      max-width: 66.666667%;
+      gap: 16px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  }
+
   &__bottom-right {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    align-items: flex-start;
+    align-items: center;
+    width: 100%;
 
-    @media (min-width: $breakpoint-md) {
+    @media (min-width: $breakpoint-lg) {
       flex-direction: row;
       align-items: center;
       gap: 24px;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      width: auto;
+      flex: 0 0 33.333333%;
+      max-width: 33.333333%;
+      justify-content: flex-end;
     }
   }
 
   &__copyright {
     font-size: 14px;
     line-height: 20px;
-    color: #cccccc;
+    color: #555E68;
     margin: 0;
   }
 
@@ -393,10 +490,10 @@
     gap: 8px;
     flex-wrap: wrap;
     font-size: 14px;
-    color: #cccccc;
+    color: #9FA6AD;
 
     a {
-      color: #cccccc;
+      color: #9FA6AD;
       text-decoration: none;
       transition: color 0.2s;
 
@@ -406,27 +503,43 @@
     }
 
     span {
-      color: #cccccc;
+      color: #9FA6AD;
     }
   }
 }
 
 // Footer Button Styles Override
-.btn-view-number {
-  @include button-view-number;
+.btn-view {
+  font-size: 14px;
+  padding: 2px 6px;
+  line-height: 160%;
+  font-weight: 400;
+  color: #fff;
+  background: #6B6B6B;
+  display: flex;
+  gap: 4px;
+  border-radius: 8px;
+  align-items: center;
 }
 
-.btn-footer-action {
-  @include button-footer-action;
-  width: 100%;
-
-  @media (min-width: $breakpoint-md) {
-    width: auto;
-    min-width: 150px;
-  }
+.btn-footer {
+  color: #fff;
+  background-color: #6B6B6B;
+  padding: 10px 25px;
+  font-size: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  line-height: 16px;
+  font-weight: 500;
+  gap: 12px;
+  justify-content: center;
 }
 
 .btn-language-selector {
   @include button-language-selector;
+  padding: 2px 4px !important;
+  background: transparent !important;
+  border: 1px solid #FFFFFF !important;
 }
 
