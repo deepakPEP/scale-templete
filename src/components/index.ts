@@ -21,3 +21,4 @@ export { default as ProductDetails } from './productDetails';
 export { default as Offices } from './offices';
 export { default as CTABanner } from './ctaBanner';
 export { default as Testimonial } from './testimonial';
+export { default as IndustryWeServe } from './industryWeServe';

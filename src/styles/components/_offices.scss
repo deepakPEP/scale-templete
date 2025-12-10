@@ -1,12 +1,16 @@
 @use "../variables" as *;
 
 .offices-section {
-  background: #f3f4f6;
+  background: #F7F7F7;
   padding: 40px 16px;
   position: relative;
 
   @media (min-width: $breakpoint-lg) {
-    padding: 60px 80px;
+    padding: 40px;
+  }
+
+  @media (min-width: $breakpoint-2xl) {
+    padding: 112px 144px;
   }
 
   &__container {
@@ -26,31 +30,26 @@
   &__tab {
     padding: 12px 24px;
     border: none;
-    background: $white;
-    color: #9ca3af;
+    background: #F7F7F7;
+    color: #323232;
     font-family: $font-family-primary;
     font-size: 15px;
-    font-weight: 400;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
-    border-bottom: 2px solid transparent;
     position: relative;
     outline: none;
 
     @media (min-width: $breakpoint-lg) {
-      padding: 14px 32px;
+      padding: 20px 58px;
       font-size: 16px;
     }
 
-    &:hover {
-      color: #6b7280;
-    }
-
     &--active {
-      background: #f3f4f6;
+      background: #fff;
       color: #374151;
-      border-bottom: 2px solid #9ca3af;
-      font-weight: 400;
+      border-bottom: 1px solid #999999;
+      font-weight: 500;
     }
   }
 
@@ -59,7 +58,7 @@
     width: 100%;
     height: 1px;
     background: #e5e7eb;
-    margin: 0;
+    margin: 0 0 32px;
     border: none;
   }
 
@@ -67,14 +66,15 @@
   &__heading {
     font-family: $font-family-primary;
     font-size: 28px;
-    font-weight: 700;
-    line-height: 1.3;
-    color: #1a1a1a;
-    margin: 24px 0 32px 0;
+    font-weight: 500;
+    line-height: 120%;
+    color: #191A1A;
+    margin: 0;
+    padding: 16px 0;
 
     @media (min-width: $breakpoint-lg) {
-      font-size: 36px;
-      margin: 32px 0 40px 0;
+      font-size: 40px;
+      margin: 0;
     }
   }
 
@@ -82,21 +82,19 @@
   &__grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 16px;
+    column-gap: 16px;
 
     @media (min-width: $breakpoint-sm) {
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
     }
 
     @media (min-width: $breakpoint-md) {
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
     }
 
     @media (min-width: $breakpoint-lg) {
       grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+      column-gap: 32px;
     }
   }
 
@@ -108,9 +106,12 @@
     border: 1px solid #e5e7eb;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     transition: all 0.2s ease;
+    margin: 8px 0;
+
 
     @media (min-width: $breakpoint-lg) {
       padding: 24px;
+      margin: 16px 0;
     }
 
     &:hover {
@@ -121,33 +122,29 @@
   &__card-company {
     font-family: $font-family-primary;
     font-size: 16px;
-    font-weight: 600;
-    line-height: 1.4;
-    color: #1a1a1a;
-    margin: 0 0 8px 0;
+    font-weight: 400;
+    line-height: 150%;
+    color: #232323;
+    margin: 0;
 
     @media (min-width: $breakpoint-lg) {
-      font-size: 17px;
-      font-weight: 600;
-      margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: 400;
+      margin: 0px;
     }
   }
 
   &__card-address {
     font-family: $font-family-primary;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
-    line-height: 1.5;
-    color: #374151;
-    margin: 0 0 4px 0;
+    line-height: 150%;
+    color: #555E68;
+    margin: 0;
 
     @media (min-width: $breakpoint-lg) {
-      font-size: 15px;
-      margin-bottom: 5px;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
+      font-size: 16px;
+      margin: 0;
     }
   }
 }

@@ -20,12 +20,9 @@ const Imagecontent: React.FC<ImagecontentProps> = ({ className = "" }) => {
         />
       </div>
       <div className="Imagecontent-section--right">
-        <h3>Quality Assurance</h3>
+        <h3>R&D</h3>
         <p>
-          Use this space to promote the business, its products or its services.
-          Help people become familiar with the business and its offerings,
-          creating a sense of connection and trust. Focus on what makes the
-          business unique and how users can benefit from choosing it.
+          Use this space to promote the business, its products or its services. Help people become familiar with the business and its offerings, creating a sense of connection and trust. Focus on what makes the business unique and how users can benefit from choosing it.Use this space to promote the business, its products or its services. Help people become familiar with the business and its offerings, creating a sense of connection and trust. Focus on what makes the business unique and how users can benefit from choosing it.
         </p>
       </div>
     </section>

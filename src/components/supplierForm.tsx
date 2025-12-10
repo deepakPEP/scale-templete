@@ -45,10 +45,13 @@ const SupplierForm: React.FC<SupplierFormProps> = ({ className = "" }) => {
         {/* Left Side - Contact Information */}
         <div className="supplierForm-section__left">
           <div className="supplierForm-section__content">
-            <h2 className="supplierForm-section__heading">Get in touch</h2>
-            <p className="supplierForm-section__subtitle">
-              Drop us a line sed id semper risus in hendrerit gravida rutrum.
-            </p>
+            <div className="supplierForm-section__head-content">
+              <h2 className="supplierForm-section__heading">Get in touch</h2>
+              <p className="supplierForm-section__subtitle">
+                Drop us a line sed id semper risus in hendrerit gravida rutrum.
+              </p>
+            </div>
+
 
             {/* Address Section */}
             <div className="supplierForm-section__info-section">
@@ -113,7 +116,9 @@ const SupplierForm: React.FC<SupplierFormProps> = ({ className = "" }) => {
 
         {/* Right Side - Form */}
         <div className="supplierForm-section__right">
-          <form className="supplierForm-section__form" onSubmit={handleSubmit}>
+        <form className="supplierForm-section__form" onSubmit={handleSubmit}>
+          {/* Grid for first 4 inputs */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10! gap-y-6!">
             <input
               type="text"
               id="name"
@@ -121,7 +126,7 @@ const SupplierForm: React.FC<SupplierFormProps> = ({ className = "" }) => {
               value={formData.name}
               onChange={handleInputChange}
               placeholder="Your name*"
-              className="supplierForm-section__input"
+              className="supplierForm-section__input w-full"
               required
             />
 
@@ -132,7 +137,7 @@ const SupplierForm: React.FC<SupplierFormProps> = ({ className = "" }) => {
               value={formData.email}
               onChange={handleInputChange}
               placeholder="Email*"
-              className="supplierForm-section__input"
+              className="supplierForm-section__input w-full"
               required
             />
 
@@ -143,7 +148,7 @@ const SupplierForm: React.FC<SupplierFormProps> = ({ className = "" }) => {
               value={formData.phone}
               onChange={handleInputChange}
               placeholder="Phone"
-              className="supplierForm-section__input"
+              className="supplierForm-section__input w-full"
             />
 
             <input
@@ -153,43 +158,48 @@ const SupplierForm: React.FC<SupplierFormProps> = ({ className = "" }) => {
               value={formData.company}
               onChange={handleInputChange}
               placeholder="Company"
-              className="supplierForm-section__input"
+              className="supplierForm-section__input w-full"
             />
+          </div>
 
-            <input
-              type="text"
-              id="location"
-              name="location"
-              value={formData.location}
-              onChange={handleInputChange}
-              placeholder="Location"
-              className="supplierForm-section__input"
-            />
+          {/* Remaining inputs below */}
+          <input
+            type="text"
+            id="location"
+            name="location"
+            value={formData.location}
+            onChange={handleInputChange}
+            placeholder="Location"
+            className="supplierForm-section__input "
+          />
 
-            <textarea
-              id="description"
-              name="description"
-              value={formData.description}
-              onChange={handleInputChange}
-              placeholder="Description"
-              className="supplierForm-section__textarea"
-              rows={4}
-            />
+          <textarea
+            id="description"
+            name="description"
+            value={formData.description}
+            onChange={handleInputChange}
+            placeholder="Description"
+            className="supplierForm-section__textarea "
+            rows={4}
+          />
 
-            <p className="supplierForm-section__privacy-notice">
-              By clicking on "Submit" button you accept the Privacy Policy and Processing of personal data
-            </p>
+        <div className="supplierForm-section__actions">
+          <p className="supplierForm-section__privacy-notice">
+            By clicking on "Submit" button you accept the Privacy Policy and Processing of personal data
+          </p>
 
-            <div className="supplierForm-section__submit">
-              <button type="submit" className="supplierForm-section__submit-btn">
-                <span>Submit</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </button>
-            </div>
-          </form>
+          <div className="supplierForm-section__submit">
+            <button type="submit" className="supplierForm-section__submit-btn">
+              <span>Submit</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        </form>
         </div>
       </div>
     </section>

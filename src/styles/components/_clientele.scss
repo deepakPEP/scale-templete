@@ -10,7 +10,11 @@
   position: relative;
 
   @media (min-width: $breakpoint-lg) {
-    padding: 64px 80px;
+    padding: 40px;
+  }
+
+  @media (min-width: $breakpoint-2xl) {
+    padding: 112px 144px;
   }
 
   &__container {
@@ -40,6 +44,18 @@
     }
   }
 
+  &__desc{
+    font-size: 18px;
+    line-height: 28px;
+    color: #616161;
+    font-weight: 400;
+    margin-bottom: 16px;
+
+    @media (min-width: $breakpoint-md) {
+    width: 50%;
+    }
+  }
+
   &__subtitle {
     font-size: $font-size-lg;
     line-height: $line-height-relaxed;
@@ -56,7 +72,12 @@
   &__slider {
     position: relative;
     overflow: hidden;
-
+    .slick-arrow{
+      display: none;
+      @media (min-width: $breakpoint-lg) {
+        display: block;
+      }
+    }
     .slick-slider {
       position: relative;
     }

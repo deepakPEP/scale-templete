@@ -1,5 +1,5 @@
 import HeroBanner from "@/components/heroBanner";
-import { Clientele, Overview, ProductList, SupplierForm, Whyus } from "@/components";
+import { Clientele, Imagecontent, IndustryWeServe, Overview, ProductList, SupplierForm, Testimonial, Whyus } from "@/components";
 import Infrastructure from "@/components/Infrastructure";
 
 export default function Home() {
@@ -14,11 +14,15 @@ export default function Home() {
 
       <Whyus />
 
+      <IndustryWeServe />
+
       <Infrastructure />
+
+      <Imagecontent />
+
+      <Testimonial/>
       
       <Clientele />
-
-      <SupplierForm />
     </div>
   );
 }

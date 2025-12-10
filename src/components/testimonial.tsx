@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
+import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -67,6 +68,12 @@ const Testimonial: React.FC<TestimonialProps> = ({ className = "" }) => {
       authorName: "G***R",
       companyName: "Chennai Manufacturing Corp",
     },
+    {
+      id: 4,
+      text: "SpectraNav SLAM navigation technology revolutionized our material handling efficiency. Their autonomous mobile robot solutions seamlessly integrated with our production line.",
+      authorName: "G***R",
+      companyName: "Chennai Manufacturing Corp",
+    },
   ];
 
   const settings = {
@@ -117,9 +124,13 @@ const Testimonial: React.FC<TestimonialProps> = ({ className = "" }) => {
               <div key={testimonial.id} className="testimonial-section__slide">
                 <div className="testimonial-section__card">
                   <div className="testimonial-section__quote-icon">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="#4CAF50">
-                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.996 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.984zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                    </svg>
+                    <Image
+                      src="/icons/colan.svg"
+                      alt="Business Growth Illustration"
+                      width={42}
+                      height={42}
+                      className="overview-section__image"
+                    />
                   </div>
                   <p className="testimonial-section__text">{testimonial.text}</p>
                   <div className="testimonial-section__separator" />

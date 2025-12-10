@@ -4,9 +4,10 @@ import {
   Clientele,
   CompanyDetails,
   Imagecontent,
+  IndustryWeServe,
+  Infrastructure,
   Overview,
   SubBanner,
-  SupplierForm,
   Testimonial,
   VisionMission,
   Whyus,
@@ -25,9 +26,15 @@ export default function About() {
 
       <CompanyDetails />
 
+      <Whyus />
+
       <VisionMission />
 
-      <Whyus />
+      <Imagecontent />
+
+      <IndustryWeServe />
+
+      <Infrastructure />
 
       <Imagecontent />
 
@@ -39,7 +46,6 @@ export default function About() {
 
       <Clientele />
 
-      <SupplierForm />
     </div>
   );
 }

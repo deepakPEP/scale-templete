@@ -8,7 +8,6 @@ export default function Products() {
 
       <ProductList maxItems={12} />
 
-      <SupplierForm />
     </div>
   );
 }
