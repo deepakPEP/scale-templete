@@ -24,13 +24,15 @@
     flex-direction: column;
     gap: 24px;
 
-    @media (min-width: 1280px) {
-      padding: 80px 72px;
-    }
-
     @media (min-width: $breakpoint-lg) {
       flex-direction: row;
+      gap: 30px;
+      padding: 40px;
+    }
+
+    @media (min-width: $breakpoint-2xl) {
       gap: 60px;
+      padding: 80px 72px;
     }
   }
 
