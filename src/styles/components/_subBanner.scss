@@ -47,7 +47,7 @@
   .sub-banner-section {
 
     &__container {
-      padding: 24px 144px;
+      padding: 40px;
     }
 
     &__title {
@@ -57,6 +57,14 @@
     &__description {
       font-size: 16px;
       line-height: 125%;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-2xl) {
+  .sub-banner-section {
+    &__container {
+      padding: 24px 144px;
     }
   }
 }
