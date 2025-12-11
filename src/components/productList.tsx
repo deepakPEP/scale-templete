@@ -15,13 +15,15 @@ interface Product {
 
 interface ProductListProps {
   className?: string;
-  maxItems?: number; // 6 for home page, 12 for products page
+  maxItems?: number; // 6 for home page, 12 for products page (only applies to non-"All" tabs)
+  hideHeader?: boolean; // Hide header and description
 }
 
-const ProductList: React.FC<ProductListProps> = ({ className = "", maxItems = 6 }) => {
-  const [activeTab, setActiveTab] = useState("Featured");
+const ProductList: React.FC<ProductListProps> = ({ className = "", maxItems = 6, hideHeader = false }) => {
+  const [activeTab, setActiveTab] = useState("All");
 
   const categories = [
+    "All",
     "Featured",
     "Modular Belts",
     "Conveyor Components",
@@ -153,12 +155,17 @@ const ProductList: React.FC<ProductListProps> = ({ className = "", maxItems = 6 
 
   // Filter products based on active tab
   let filteredProducts =
-    activeTab === "Featured"
+    activeTab === "All"
+      ? allProducts // Show all products when "All" is selected
+      : activeTab === "Featured"
       ? allProducts.filter((product) => product.group === "Featured")
       : allProducts.filter((product) => product.group === activeTab);
 
-  // Limit the number of products displayed
-  filteredProducts = filteredProducts.slice(0, maxItems);
+  // Limit the number of products displayed only if maxItems is set and not showing "All"
+  // When "All" is selected, always show all products regardless of maxItems
+  if (maxItems && activeTab !== "All") {
+    filteredProducts = filteredProducts.slice(0, maxItems);
+  }
 
   const hasMoreProducts = allProducts.length > maxItems;
 
@@ -166,13 +173,15 @@ const ProductList: React.FC<ProductListProps> = ({ className = "", maxItems = 6 
     <section className={`product-list-section ${className}`}>
       <div className="product-list-section__container">
         {/* Header */}
-        <div className="product-list-section__header">
-          <h1 className="product-list-section__title">Products</h1>
-          <p className="product-list-section__subtitle">
-            Manufacturer & Exporter of Modular belts, Slat Chains and a complete
-            range of conveyor components.
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="product-list-section__header">
+            <h1 className="product-list-section__title">Products</h1>
+            <p className="product-list-section__subtitle">
+              Manufacturer & Exporter of Modular belts, Slat Chains and a complete
+              range of conveyor components.
+            </p>
+          </div>
+        )}
 
         {/* Tab Navigation */}
         <div className="product-list-section__tabs">

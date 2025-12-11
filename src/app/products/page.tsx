@@ -1,12 +1,12 @@
-import { ProductListing, SubBanner, SupplierForm, ProductList } from "@/components";
+import { SubBanner, ProductList } from "@/components";
 
 export default function Products() {
 
   return (
     <div className="min-h-screen">
-      <SubBanner title="Products" description="Describe the Important features, pricing and other relevant info" />
+      <SubBanner title="Products" description="Home / Products" />
 
-      <ProductList maxItems={12} />
+      <ProductList hideHeader={true} />
 
     </div>
   );

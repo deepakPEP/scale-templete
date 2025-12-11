@@ -13,6 +13,10 @@
     padding: 64px 80px;
   }
 
+  @media (min-width: $breakpoint-2xl) {
+    padding: 114px 144px;
+  }
+
   &__container {
     max-width: 1920px;
     margin: 0 auto;

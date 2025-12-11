@@ -1,0 +1,101 @@
+@use "../variables" as *;
+
+.about-subnav {
+  background-color: $white;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 50px;
+  z-index: 40;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  @media (min-width: $breakpoint-md) {
+    top: 80px;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    top: 85px;
+  }
+
+  @media (min-width: $breakpoint-2xl) {
+    top: 75px;
+  }
+
+  &__container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 16px;
+
+    @media (min-width: $breakpoint-lg) {
+      padding: 0 40px;
+    }
+
+    @media (min-width: $breakpoint-2xl) {
+      padding: 0 144px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE and Edge
+
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari, Opera
+    }
+  }
+
+  &__item-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__separator {
+    width: 1px;
+    height: 20px;
+    background-color: #d1d5db;
+    flex-shrink: 0;
+  }
+
+  &__item {
+    padding: 16px 20px;
+    background: none;
+    border: none;
+    color: #4b5563;
+    font-family: $font-family-primary;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    position: relative;
+    outline: none;
+    flex-shrink: 0;
+
+    @media (min-width: $breakpoint-lg) {
+      padding: 16px 24px;
+      font-size: 15px;
+    }
+
+    &:hover {
+      color: #1f2937;
+    }
+
+    &--active {
+      color: #1f2937;
+      font-weight: 600;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: #10b981; // Green color
+      }
+    }
+  }
+}
+

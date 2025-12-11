@@ -5,9 +5,13 @@ import Image from "next/image";
 
 interface ImagecontentProps {
   className?: string;
+  heading: string;
+  description: string;
 }
 
-const Imagecontent: React.FC<ImagecontentProps> = ({ className = "" }) => {
+const Imagecontent: React.FC<ImagecontentProps> = ({ className = "",
+  heading,
+  description, }) => {
   return (
     <section className={`Imagecontent-section ${className}`}>
       <div className="Imagecontent-section--left">
@@ -20,9 +24,9 @@ const Imagecontent: React.FC<ImagecontentProps> = ({ className = "" }) => {
         />
       </div>
       <div className="Imagecontent-section--right">
-        <h3>R&D</h3>
+        <h3>{heading}</h3>
         <p>
-          Use this space to promote the business, its products or its services. Help people become familiar with the business and its offerings, creating a sense of connection and trust. Focus on what makes the business unique and how users can benefit from choosing it.Use this space to promote the business, its products or its services. Help people become familiar with the business and its offerings, creating a sense of connection and trust. Focus on what makes the business unique and how users can benefit from choosing it.
+          {description}
         </p>
       </div>
     </section>

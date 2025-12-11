@@ -1,105 +1,379 @@
 @use "../variables" as *;
 
 .overview-section {
-  background: #ffffff;
+  background: #f5f5f5;
   padding: 16px;
   position: relative;
 
   @media (min-width: $breakpoint-lg) {
-    padding: 112px 80px;
+    padding: 40px;
+  }
+
+  @media (min-width: $breakpoint-2xl) {
+    padding: 114px 144px;
   }
 
   &__container {
-    display: flex;
     max-width: 1920px;
     margin: 0 auto;
+    display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 24px;
 
     @media (min-width: $breakpoint-lg) {
-      flex-direction: row;
-      gap: 0px;
+      gap: 54px;
     }
   }
 
-  &__left {
+  // Top Section
+  &__top {
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    gap: 32px;
 
     @media (min-width: $breakpoint-lg) {
-      flex: 0 0 50%;
+      flex-direction: row;
+      gap: 100px;
+      align-items: flex-start;
     }
+
+    &.overview-section__top--about{
+      flex-direction: column;
+      align-items: center;
+
+        .overview-section__left {
+          flex: 1;
+          text-align: center;
+          justify-items: center;
+        }
+
+        .overview-section__content {
+          width: 100%;
+
+          @media (min-width: $breakpoint-lg) {
+            width: 50%;
+          }
+        }
+
+        .overview-section__button{
+          display: none;
+        }
+    }
+  }
+
+  // Left Side - Content
+  &__left {
+    flex: 1;
   }
 
   &__content {
     width: 100%;
+    @media (min-width: $breakpoint-lg) {
+      width: 80%;
+    }
   }
 
   &__heading {
     font-family: $font-family-primary;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: $font-weight-medium;
-    line-height: 133%;
-    color: $text-primary;
-    width: 100%;
-    margin-bottom: 6px;
+    line-height: 24px;
+    color: $text-secondary;
+    margin: 0 0 8px 0;
 
     @media (min-width: $breakpoint-lg) {
-      font-size: 28px;
-      margin-bottom: 40px;
-      max-width: 550px;
+      font-size: 16px;
+      margin-bottom: 17px;
+      margin-top: 30px;
     }
+  }
+
+  &__title {
+    font-family: $font-family-secondary;
+    font-size: 24px;
+    font-weight: $font-weight-bold;
+    line-height: 133%;
+    color: $text-primary;
+    margin: 0 0 16px 0;
+
+    @media (min-width: $breakpoint-lg) {
+      font-size: 60px;
+      line-height: 66px;
+      margin-bottom: 17px;
+    }
+  }
+
+  &__detail-info{
+    display: flex;
+    gap: 14px;
   }
 
   &__description {
     font-family: $font-family-primary;
-    font-size: 22px;
-    line-height: 24px;
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: $font-weight-normal;
+    color: #666666;
+    margin: 0 0 24px 0;
+    max-width: 100%;
+
+    @media (min-width: $breakpoint-lg) {
+      font-size: 18px;
+      line-height: 28px;
+      margin-bottom: 26px;
+    }
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    padding: 12px 24px;
+    background: linear-gradient(270deg, #000000 0%, rgba(56, 56, 56, 0.8) 100%);
+    color: $white;
+    border: none;
+    font-size: 14px;
     font-weight: $font-weight-medium;
-    color: $text-primary;
-    width: 100%;
-    margin-bottom: 8px;
+    transition: all $transition-base;
 
     @media (min-width: $breakpoint-lg) {
-      margin-bottom: $spacing-xl;
-      font-size: 36px;
-      line-height: 133%;
-      max-width: 550px;
+      padding: 14px 28px;
+      font-size: 16px;
+      gap: 10px;
+    }
+
+    svg {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
     }
   }
 
+  // Right Side - Badges
   &__right {
-    width: 100%;
     display: flex;
+    // justify-content: center;
 
-    @media (min-width: $breakpoint-lg) {
-      flex: 0 0 50%;
-    }
+    // @media (min-width: $breakpoint-lg) {
+    //   justify-content: flex-end;
+    // }
+
   }
 
-  &__visual {
-    width: 100%;
+  &__badges {
     display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    gap: 12px;
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
 
     @media (min-width: $breakpoint-lg) {
-      gap: 32px;
+      flex-direction: row;
+      gap: 40px;
+      align-items: center;
     }
 
-    p{
-      font-size: 14px;
-      line-height: 20px;
-      color: $text-secondary;
-      font-family: $font-family-primary;
-      font-weight: 400;
-      margin: 0;
-
-      @media (min-width: $breakpoint-md) {
-        font-size: 18px;
-        line-height: 155%;
+    img {
+      width: 105px;
+      height: 105px;
+      @media (min-width: $breakpoint-lg) {
+        width: 200px;
+        height: 200px;
       }
     }
+  }
+
+  &__badge {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+
+    @media (min-width: $breakpoint-lg) {
+      width: 180px;
+      height: 180px;
+    }
+
+    &--tru-secure {
+      background: linear-gradient(135deg, #ff8c42 0%, #ffb84d 50%, #ffa500 100%);
+      box-shadow: 0 4px 20px rgba(255, 140, 66, 0.3);
+    }
+
+    &--eco-verified {
+      background: linear-gradient(135deg, #4ade80 0%, #22c55e 50%, #16a34a 100%);
+      box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+    }
+  }
+
+  &__badge-svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    animation: rotate 20s linear infinite;
+  }
+
+  &__badge-ring-text {
+    text-transform: uppercase;
+  }
+
+  &__badge-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 65%;
+    height: 65%;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  &__badge-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+
+    @media (min-width: $breakpoint-lg) {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 6px;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__badge-text {
+    font-family: $font-family-primary;
+    font-size: 11px;
+    font-weight: $font-weight-semibold;
+    color: $white;
+    text-align: center;
+    line-height: 1.2;
+
+    @media (min-width: $breakpoint-lg) {
+      font-size: 13px;
+    }
+  }
+
+  &__badge-stars {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    margin-top: 2px;
+
+    svg {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  // Bottom Section - Company Details
+  &__details {
+    background: $white;
+    border-radius: 12px;
+    padding: 32px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    @media (min-width: $breakpoint-lg) {
+      padding: 24px;
+      border-radius: 20px;
+    }
+  }
+
+  &__details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 16px;
+
+    @media (min-width: $breakpoint-md) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px 20px;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      gap: 48px 24px;
+    }
+  }
+
+  &__detail-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__detail-icon {
+    width: 28px;
+    height: 28px;
+    color: $text-primary;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+
+    @media (min-width: $breakpoint-lg) {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 12px;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__detail-label {
+    font-family: $font-family-primary;
+    font-size: 11px;
+    font-weight: $font-weight-normal;
+    color: $text-secondary;
+    line-height: 1.4;
+    margin-bottom: 4px;
+
+    @media (min-width: $breakpoint-lg) {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+  }
+
+  &__detail-value {
+    font-family: $font-family-secondary;
+    font-size: 15px;
+    font-weight: $font-weight-medium;
+    color: $text-primary;
+    line-height: 1.4;
+
+    @media (min-width: $breakpoint-lg) {
+      font-size: 20px;
+    }
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

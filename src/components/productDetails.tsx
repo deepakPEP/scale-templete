@@ -37,6 +37,391 @@ interface ProductDetailsProps {
   group?: string;
 }
 
+// Component for rendering related product details
+const RelatedProductDetails: React.FC<{ product: Product }> = ({ product }) => {
+  const [localImageIndex, setLocalImageIndex] = useState(0);
+  const [localPlatform, setLocalPlatform] = useState("Variation 1");
+  const [localCapacity, setLocalCapacity] = useState("Option 1");
+  const [localAttributesOpen, setLocalAttributesOpen] = useState(true);
+
+  const productImages = product.images || [product.image];
+
+  return (
+    <div className="product-details__related-full-details">
+      <div className="product-details__related-main">
+        <div className="product-details__related-left">
+          {/* Image Gallery */}
+          <div className="product-details__related-gallery">
+            <div className="product-details__related-main-image">
+              <div className="product-details__image-placeholder">
+                <svg
+                  width="200"
+                  height="200"
+                  viewBox="0 0 200 200"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="20"
+                    y="20"
+                    width="160"
+                    height="160"
+                    rx="8"
+                    stroke="#e0e0e0"
+                    strokeWidth="2"
+                    fill="none"
+                  />
+                  <circle cx="100" cy="70" r="25" fill="#f0f0f0" />
+                  <path
+                    d="M60 120L80 140L140 80"
+                    stroke="#e0e0e0"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+            {/* Mobile: Dots Navigation */}
+            <div className="product-details__related-dots">
+              {productImages.map((img, index) => (
+                <button
+                  key={index}
+                  className={`product-details__related-dot ${
+                    localImageIndex === index
+                      ? "product-details__related-dot--active"
+                      : ""
+                  }`}
+                  onClick={() => setLocalImageIndex(index)}
+                  aria-label={`View image ${index + 1}`}
+                />
+              ))}
+            </div>
+            {/* Desktop: Thumbnails */}
+            <div className="product-details__related-thumbnails">
+              {productImages.map((img, index) => (
+                <button
+                  key={index}
+                  className={`product-details__related-thumbnail ${
+                    localImageIndex === index
+                      ? "product-details__related-thumbnail--active"
+                      : ""
+                  }`}
+                  onClick={() => setLocalImageIndex(index)}
+                >
+                  <div className="product-details__related-thumbnail-placeholder">
+                    {localImageIndex === index && (
+                      <span className="product-details__related-thumbnail-indicator" />
+                    )}
+                    <svg
+                      width="60"
+                      height="60"
+                      viewBox="0 0 60 60"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="5"
+                        y="5"
+                        width="50"
+                        height="50"
+                        rx="4"
+                        stroke="#e0e0e0"
+                        strokeWidth="2"
+                        fill="none"
+                      />
+                      <circle cx="30" cy="20" r="8" fill="#f0f0f0" />
+                    </svg>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Product Description */}
+          <div className="product-details__related-description-section">
+            <h2 className="product-details__related-section-title">
+              Product Description
+            </h2>
+            <p className="product-details__related-description-text">
+              {product.description ||
+                "Enhance your packaging operations with our high-performance Vertical Band Sealing Machine. Designed for continuous sealing of pre-formed bags and pouches, this machine ensures secure and consistent seals."}
+            </p>
+          </div>
+        </div>
+
+        <div className="product-details__related-right">
+          {/* Rating and Reviews */}
+          {product.rating && (
+            <div className="product-details__related-rating">
+              <div className="product-details__related-stars">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <svg
+                    key={star}
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill={star <= (product.rating || 4.9) ? "#FFD700" : "none"}
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10 1L12.5 7H19L13.5 10.5L16 17L10 13L4 17L6.5 10.5L1 7H7.5L10 1Z"
+                      stroke={star <= (product.rating || 4.9) ? "#FFD700" : "#e0e0e0"}
+                      strokeWidth="1.5"
+                      fill={star <= (product.rating || 4.9) ? "#FFD700" : "none"}
+                    />
+                  </svg>
+                ))}
+              </div>
+              <span className="product-details__related-rating-text">
+                {product.rating || 4.9}/5
+              </span>
+              <span className="product-details__related-reviews">
+                ({product.reviews || 2424} Reviews)
+              </span>
+            </div>
+          )}
+
+          {/* Price and MOQ */}
+          <div className="product-details__related-price-section">
+            <div className="product-details__related-price-row">
+              <div>
+                <p className="product-details__related-price">
+                  {product.price || "$1468.88 Per Unit"}
+                </p>
+                {product.moq && (
+                  <p className="product-details__related-moq">{product.moq}</p>
+                )}
+              </div>
+              <span className="product-details__related-customizable">Customizable</span>
+            </div>
+          </div>
+
+          {/* Variations */}
+          {product.variations && (
+            <div className="product-details__related-variations">
+              <div className="product-details__related-variations-header">
+                <h3 className="product-details__related-variations-title">Variations</h3>
+                <div className="product-details__related-variations-info-row">
+                  <p className="product-details__related-variations-info">
+                    Total options: {product.variations.platform.length} Platforms :{" "}
+                    {product.variations.capacity.length} Capacity
+                  </p>
+                </div>
+              </div>
+
+              {/* Reform Size */}
+              <div className="product-details__related-variation-group">
+                <label className="product-details__related-variation-label">
+                  Reform Size
+                </label>
+                <div className="product-details__related-variation-options">
+                  {product.variations.platform.map((option) => (
+                    <button
+                      key={option}
+                      className={`product-details__related-variation-btn ${
+                        localPlatform === option
+                          ? "product-details__related-variation-btn--active"
+                          : ""
+                      }`}
+                      onClick={() => setLocalPlatform(option)}
+                    >
+                      {option}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Capacity */}
+              <div className="product-details__related-variation-group">
+                <label className="product-details__related-variation-label">
+                  Capacity (in tons):
+                </label>
+                <div className="product-details__related-variation-options">
+                  {product.variations.capacity.map((option) => (
+                    <button
+                      key={option}
+                      className={`product-details__related-variation-btn ${
+                        localCapacity === option
+                          ? "product-details__related-variation-btn--active"
+                          : ""
+                      }`}
+                      onClick={() => setLocalCapacity(option)}
+                    >
+                      {option}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Key Attributes */}
+          {product.keyAttributes && (
+            <div className="product-details__related-key-attributes">
+              <button
+                className="product-details__related-attributes-toggle"
+                onClick={() => setLocalAttributesOpen(!localAttributesOpen)}
+              >
+                <h3 className="product-details__related-section-title">Key Attributes</h3>
+                <svg
+                  className={`product-details__related-toggle-icon ${
+                    localAttributesOpen
+                      ? "product-details__related-toggle-icon--open"
+                      : ""
+                  }`}
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5 12.5L10 7.5L15 12.5"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+              {localAttributesOpen && (
+                <div className="product-details__related-attributes-content">
+                  <div className="product-details__related-attributes-table">
+                    {product.keyAttributes.industry &&
+                      product.keyAttributes.industry.map((attr, index) => (
+                        <div
+                          key={`industry-${index}`}
+                          className="product-details__related-attribute-row"
+                        >
+                          <span className="product-details__related-attribute-label">
+                            {attr.label}
+                          </span>
+                          <span className="product-details__related-attribute-value">
+                            {attr.value}
+                          </span>
+                        </div>
+                      ))}
+                    {product.keyAttributes.other &&
+                      product.keyAttributes.other.map((attr, index) => (
+                        <div
+                          key={`other-${index}`}
+                          className="product-details__related-attribute-row"
+                        >
+                          <span className="product-details__related-attribute-label">
+                            {attr.label}
+                          </span>
+                          <span className="product-details__related-attribute-value">
+                            {attr.value}
+                          </span>
+                        </div>
+                      ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Shipping Information */}
+          {product.shipping && (
+            <div className="product-details__related-shipping">
+              <h3 className="product-details__related-section-title">Shipping</h3>
+              <div className="product-details__related-shipping-details">
+                {product.shipping.delivery && (
+                  <div className="product-details__related-shipping-row">
+                    <span className="product-details__related-shipping-label">
+                      {product.shipping.delivery}
+                    </span>
+                  </div>
+                )}
+                <div className="product-details__related-shipping-row">
+                  <span className="product-details__related-shipping-label">
+                    Shipping location
+                  </span>
+                  <span className="product-details__related-shipping-value">
+                    {product.shipping.international ? "Yes" : "No"}
+                  </span>
+                </div>
+                <div className="product-details__related-shipping-row">
+                  <span className="product-details__related-shipping-label">
+                    Shipment Mode
+                  </span>
+                  <span className="product-details__related-shipping-value">
+                    {product.shipping.mode || "Air, Ship"}
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Action Buttons */}
+          <div className="product-details__related-actions">
+            <button className="product-details__related-action-btn product-details__related-action-btn--download">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10 12.5V3.75M10 12.5L6.25 8.75M10 12.5L13.75 8.75M3.75 15.625H16.25"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              Download Brochure
+            </button>
+            <button className="product-details__related-action-btn product-details__related-action-btn--chat">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17.5 5C17.5 4.46957 17.2893 3.96086 16.9142 3.58579C16.5391 3.21071 16.0304 3 15.5 3H4.5C3.96957 3 3.46086 3.21071 3.08579 3.58579C2.71071 3.96086 2.5 4.46957 2.5 5V12.5C2.5 13.0304 2.71071 13.5391 3.08579 13.9142C3.46086 14.2893 3.96957 14.5 4.5 14.5H5.5L7.5 16.5L9.5 14.5H15.5C16.0304 14.5 16.5391 14.2893 16.9142 13.9142C17.2893 13.5391 17.5 13.0304 17.5 12.5V5Z"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  fill="none"
+                />
+                <path
+                  d="M6.25 7.5H13.75M6.25 10H13.75"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+              Chat now
+            </button>
+            <button className="product-details__related-action-btn product-details__related-action-btn--quote">
+              Request for Quote
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.5 5L12.5 10L7.5 15"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const ProductDetails: React.FC<ProductDetailsProps> = ({
   productId,
   group,
@@ -45,6 +430,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
   const [selectedPlatform, setSelectedPlatform] = useState("Variation 1");
   const [selectedCapacity, setSelectedCapacity] = useState("Option 1");
   const [isAttributesOpen, setIsAttributesOpen] = useState(true);
+  const [openProductId, setOpenProductId] = useState<number | null>(null);
 
   // Sample product data - In a real app, this would come from an API
   const allProducts: Product[] = [
@@ -57,8 +443,8 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
       group: "Featured",
       image: "/images/product-placeholder.png",
       price: "$1468.88 Per Unit",
-      rating: 4.8,
-      reviews: 23424,
+      rating: 4.9,
+      reviews: 2424,
       moq: "MOQ 1box",
       variations: {
         platform: ["Variation 1", "Variation 2", "Variation 3", "Variation 4"],
@@ -103,8 +489,8 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
       group: "Featured",
       image: "/images/product-placeholder.png",
       price: "$1468.88 Per Unit",
-      rating: 4.8,
-      reviews: 23424,
+      rating: 4.9,
+      reviews: 2424,
       moq: "MOQ 1box",
       variations: {
         platform: ["Variation 1", "Variation 2", "Variation 3", "Variation 4"],
@@ -196,448 +582,117 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
     (p) => p.group === (group || currentProduct.group) && p.id !== productId
   );
 
-  // Ensure we have images array
-  const productImages = currentProduct.images || [currentProduct.image];
+  // Set first product as open by default
+  useEffect(() => {
+    if (relatedProducts.length > 0 && openProductId === null) {
+      setOpenProductId(relatedProducts[0].id);
+    }
+  }, [relatedProducts.length, openProductId]);
+
+  const toggleProduct = (productId: number) => {
+    // Close current if clicking the same, otherwise open the clicked one
+    setOpenProductId(openProductId === productId ? null : productId);
+  };
 
   return (
     <section className="product-details">
       <div className="product-details__container">
-        {/* Mobile: Product Title at Top */}
-        <h1 className="product-details__title product-details__title--mobile">
-          {currentProduct.name || "Product name goes here"}
-        </h1>
-
-        {/* Main Product Section */}
-        <div className="product-details__main">
-          <div className="product-details__left">
-            {/* Image Gallery */}
-            <div className="product-details__gallery">
-              <div className="product-details__main-image">
-                <div className="product-details__image-placeholder">
-                  <svg
-                    width="200"
-                    height="200"
-                    viewBox="0 0 200 200"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="20"
-                      y="20"
-                      width="160"
-                      height="160"
-                      rx="8"
-                      stroke="#e0e0e0"
-                      strokeWidth="2"
-                      fill="none"
-                    />
-                    <circle cx="100" cy="70" r="25" fill="#f0f0f0" />
-                    <path
-                      d="M60 120L80 140L140 80"
-                      stroke="#e0e0e0"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              </div>
-              {/* Mobile: Dots Navigation */}
-              <div className="product-details__dots">
-                {productImages.map((img, index) => (
-                  <button
-                    key={index}
-                    className={`product-details__dot ${
-                      selectedImageIndex === index
-                        ? "product-details__dot--active"
-                        : ""
-                    }`}
-                    onClick={() => setSelectedImageIndex(index)}
-                    aria-label={`View image ${index + 1}`}
-                  />
-                ))}
-              </div>
-              {/* Desktop: Thumbnails */}
-              <div className="product-details__thumbnails">
-                {productImages.map((img, index) => (
-                  <button
-                    key={index}
-                    className={`product-details__thumbnail ${
-                      selectedImageIndex === index
-                        ? "product-details__thumbnail--active"
-                        : ""
-                    }`}
-                    onClick={() => setSelectedImageIndex(index)}
-                  >
-                    <div className="product-details__thumbnail-placeholder">
-                      {selectedImageIndex === index && (
-                        <span className="product-details__thumbnail-indicator" />
-                      )}
-                      <svg
-                        width="60"
-                        height="60"
-                        viewBox="0 0 60 60"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <rect
-                          x="5"
-                          y="5"
-                          width="50"
-                          height="50"
-                          rx="4"
-                          stroke="#e0e0e0"
-                          strokeWidth="2"
-                          fill="none"
-                        />
-                        <circle cx="30" cy="20" r="8" fill="#f0f0f0" />
-                      </svg>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Product Description */}
-            <div className="product-details__description-section">
-              <h2 className="product-details__section-title">
-                Product Description
-              </h2>
-              <p className="product-details__description-text">
-                {currentProduct.description ||
-                  "Enhance your packaging operations with our high-performance Vertical Band Sealing Machine. Designed for continuous sealing of pre-formed bags and pouches, this machine ensures secure and consistent seals. Perfect for food, pharmaceutical, and general packaging applications. Features include adjustable temperature control, variable speed sealing, and user-friendly operation. Enhance your packaging operations with our high-performance Vertical Band Sealing Machine. Designed for continuous sealing of pre-formed bags and pouches, this machine ensures secure and consistent seals."}
-              </p>
-            </div>
-          </div>
-
-          <div className="product-details__right">
-            {/* Desktop: Product Title */}
-            <h1 className="product-details__title product-details__title--desktop">
-              {currentProduct.name || "Product name goes here"}
-            </h1>
-
-            {/* Rating and Reviews */}
-            <div className="product-details__rating">
-              <div className="product-details__stars">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <svg
-                    key={star}
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill={star <= (currentProduct.rating || 4.8) ? "#FFD700" : "none"}
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M10 1L12.5 7H19L13.5 10.5L16 17L10 13L4 17L6.5 10.5L1 7H7.5L10 1Z"
-                      stroke={star <= (currentProduct.rating || 4.8) ? "#FFD700" : "#e0e0e0"}
-                      strokeWidth="1.5"
-                      fill={star <= (currentProduct.rating || 4.8) ? "#FFD700" : "none"}
-                    />
-                  </svg>
-                ))}
-              </div>
-              <span className="product-details__rating-text">
-                {currentProduct.rating || 4.8}/5
-              </span>
-              <span className="product-details__reviews">
-                ({currentProduct.reviews || 23424} Reviews)
-              </span>
-            </div>
-
-            {/* Price and MOQ */}
-            <div className="product-details__price-section">
-              <div className="product-details__price-row">
-                <div>
-                  <p className="product-details__price">
-                    {currentProduct.price || "$1468.88 Per Unit"}
-                  </p>
-                  <p className="product-details__moq">
-                    {currentProduct.moq || "MOQ 1box"}
-                  </p>
-                </div>
-                <span className="product-details__customizable">Customizable</span>
-              </div>
-            </div>
-
-            {/* Variations */}
-            {currentProduct.variations && (
-              <div className="product-details__variations">
-                <div className="product-details__variations-header">
-                  <h3 className="product-details__variations-title">Variations</h3>
-                  <div className="product-details__variations-info-row">
-                    <p className="product-details__variations-info">
-                      Total options: {currentProduct.variations.platform.length}{" "}
-                      Platform ; {currentProduct.variations.capacity.length} Capacity
-                    </p>
-                    <button className="product-details__select-variant-link">
-                      Select Multiple Variants
-                    </button>
-                  </div>
-                </div>
-
-                {/* Platform Size */}
-                <div className="product-details__variation-group">
-                  <label className="product-details__variation-label">
-                    Platform Size:
-                  </label>
-                  <div className="product-details__variation-options">
-                    {currentProduct.variations.platform.map((option) => (
-                      <button
-                        key={option}
-                        className={`product-details__variation-btn ${
-                          selectedPlatform === option
-                            ? "product-details__variation-btn--active"
-                            : ""
-                        }`}
-                        onClick={() => setSelectedPlatform(option)}
-                      >
-                        {option}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Capacity */}
-                <div className="product-details__variation-group">
-                  <label className="product-details__variation-label">
-                    Capacity (in tons):
-                  </label>
-                  <div className="product-details__variation-options">
-                    {currentProduct.variations.capacity.map((option) => (
-                      <button
-                        key={option}
-                        className={`product-details__variation-btn ${
-                          selectedCapacity === option
-                            ? "product-details__variation-btn--active"
-                            : ""
-                        }`}
-                        onClick={() => setSelectedCapacity(option)}
-                      >
-                        {option}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Key Attributes - Collapsible */}
-            {currentProduct.keyAttributes && (
-              <div className="product-details__key-attributes">
-                <button
-                  className="product-details__attributes-toggle"
-                  onClick={() => setIsAttributesOpen(!isAttributesOpen)}
-                >
-                  <h3 className="product-details__section-title">Key Attributes</h3>
-                  <svg
-                    className={`product-details__toggle-icon ${
-                      isAttributesOpen ? "product-details__toggle-icon--open" : ""
-                    }`}
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M5 12.5L10 7.5L15 12.5"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-                {isAttributesOpen && (
-                  <div className="product-details__attributes-content">
-                    {/* Industry-specific Attributes */}
-                    {currentProduct.keyAttributes.industry && (
-                      <div className="product-details__attributes-subsection">
-                        <h4 className="product-details__attributes-subtitle">
-                          Industry-specific Attributes
-                        </h4>
-                        <div className="product-details__attributes-table">
-                          {currentProduct.keyAttributes.industry.map((attr, index) => (
-                            <div key={index} className="product-details__attribute-row">
-                              <span className="product-details__attribute-label">
-                                {attr.label}
-                              </span>
-                              <span className="product-details__attribute-value">
-                                {attr.value}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                    {/* Other Attributes */}
-                    {currentProduct.keyAttributes.other && (
-                      <div className="product-details__attributes-subsection">
-                        <h4 className="product-details__attributes-subtitle">
-                          Other Attributes
-                        </h4>
-                        <div className="product-details__attributes-table">
-                          {currentProduct.keyAttributes.other.map((attr, index) => (
-                            <div key={index} className="product-details__attribute-row">
-                              <span className="product-details__attribute-label">
-                                {attr.label}
-                              </span>
-                              <span className="product-details__attribute-value">
-                                {attr.value}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Shipping Information */}
-            {currentProduct.shipping && (
-              <div className="product-details__shipping">
-                <h3 className="product-details__section-title">Shipping</h3>
-                <div className="product-details__shipping-details">
-                  <div className="product-details__shipping-row">
-                    <span className="product-details__shipping-label">Express</span>
-                  </div>
-                  {currentProduct.shipping.fee && (
-                    <div className="product-details__shipping-row">
-                      <span className="product-details__shipping-label">
-                        Shipping fee: Ext. {currentProduct.shipping.fee} for 1 set
-                      </span>
-                    </div>
-                  )}
-                  {currentProduct.shipping.delivery && (
-                    <div className="product-details__shipping-row">
-                      <span className="product-details__shipping-label">
-                        Estimated delivery in {currentProduct.shipping.delivery}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-
-            {/* Action Buttons */}
-            <div className="product-details__actions">
-              <button className="product-details__action-btn product-details__action-btn--chat">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M17.5 5C17.5 4.46957 17.2893 3.96086 16.9142 3.58579C16.5391 3.21071 16.0304 3 15.5 3H4.5C3.96957 3 3.46086 3.21071 3.08579 3.58579C2.71071 3.96086 2.5 4.46957 2.5 5V12.5C2.5 13.0304 2.71071 13.5391 3.08579 13.9142C3.46086 14.2893 3.96957 14.5 4.5 14.5H5.5L7.5 16.5L9.5 14.5H15.5C16.0304 14.5 16.5391 14.2893 16.9142 13.9142C17.2893 13.5391 17.5 13.0304 17.5 12.5V5Z"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    fill="none"
-                  />
-                  <path
-                    d="M6.25 7.5H13.75M6.25 10H13.75"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-                </svg>
-                Chat now
-              </button>
-              <button className="product-details__action-btn product-details__action-btn--quote">
-                Request for Quote
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M7.5 5L12.5 10L7.5 15"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Related Products Section */}
+        {/* Related Products Section - Accordion */}
         {relatedProducts.length > 0 && (
           <div className="product-details__related">
-            <h2 className="product-details__related-title">Related Products</h2>
             <div className="product-details__related-list">
-              {relatedProducts.map((product) => (
-                <Link
-                  key={product.id}
-                  href={`/products/${product.id}?group=${encodeURIComponent(product.group)}`}
-                  className="product-details__related-card"
-                >
-                  <div className="product-details__related-image">
-                    <div className="product-details__related-image-placeholder">
-                      <svg
-                        width="100"
-                        height="100"
-                        viewBox="0 0 100 100"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+              {relatedProducts.map((product) => {
+                const isOpen = openProductId === product.id;
+                return (
+                  <div key={product.id} className="product-details__related-accordion-item">
+                    {/* Header - Only show when collapsed */}
+                    {!isOpen && (
+                      <button
+                        className="product-details__related-toggle"
+                        onClick={() => toggleProduct(product.id)}
                       >
-                        <rect
-                          x="10"
-                          y="10"
-                          width="80"
-                          height="80"
-                          rx="4"
-                          stroke="#e0e0e0"
-                          strokeWidth="2"
-                          fill="none"
-                        />
-                        <circle cx="50" cy="35" r="10" fill="#f0f0f0" />
-                        <path
-                          d="M35 65L45 75L65 55"
-                          stroke="#e0e0e0"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
+                        <div className="product-details__related-toggle-content">
+                          <div className="product-details__related-image">
+                            <div className="product-details__related-image-placeholder">
+                              <svg
+                                width="100"
+                                height="100"
+                                viewBox="0 0 100 100"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <rect
+                                  x="10"
+                                  y="10"
+                                  width="80"
+                                  height="80"
+                                  rx="4"
+                                  stroke="#e0e0e0"
+                                  strokeWidth="2"
+                                  fill="none"
+                                />
+                                <circle cx="50" cy="35" r="10" fill="#f0f0f0" />
+                                <path
+                                  d="M35 65L45 75L65 55"
+                                  stroke="#e0e0e0"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                            </div>
+                          </div>
+                          <div className="product-details__related-header-content">
+                            <h3 className="product-details__related-name">{product.name}</h3>
+                            {product.description && (
+                              <p className="product-details__related-description-snippet">
+                                {product.description.length > 100
+                                  ? `${product.description.substring(0, 100)}...`
+                                  : product.description}
+                              </p>
+                            )}
+                            {product.price && (
+                              <p className="product-details__related-price-snippet">
+                                {product.price}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                        <div className="product-details__related-header-actions">
+                          <Link
+                            href={`/products/${product.id}?group=${encodeURIComponent(product.group)}`}
+                            className="product-details__related-view-link"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            View Details
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M4 6L8 10L12 6"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </Link>
+                        </div>
+                      </button>
+                    )}
+                    {/* Full Details - Only show when expanded */}
+                    {isOpen && (
+                      <div className="product-details__related-content-wrapper product-details__related-content-wrapper--open">
+                        <RelatedProductDetails product={product} />
+                      </div>
+                    )}
                   </div>
-                  <div className="product-details__related-content">
-                    <h3 className="product-details__related-name">{product.name}</h3>
-                    <span className="product-details__related-customizable">
-                      Customizable
-                    </span>
-                  </div>
-                  <div className="product-details__related-action">
-                    <span className="product-details__related-link">
-                      View Details
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M4 6L8 10L12 6"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                </Link>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}

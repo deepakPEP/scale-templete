@@ -132,6 +132,7 @@ const Certifications: React.FC<CertificationsProps> = ({ className = "" }) => {
                   <Image
                     src={cert.logo}
                     alt={cert.name}
+                    unoptimized
                     width={120}
                     height={80}
                     className="certifications-section__logo"

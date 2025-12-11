@@ -175,15 +175,19 @@
     .header-dropdown {
       position: absolute;
       top: 80%;
-      left: 0;
+      left: 0px;
       background: $white;
       border: 1px solid $border-light;
       border-radius: $border-radius-md;
       box-shadow: $shadow-lg;
       padding: 8px 0;
-      min-width: 160px;
+      min-width: max-content;
       z-index: 100;
       margin-top: 4px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 14px;
+      row-gap: 12px;
       
       .header-dropdown-item {
         display: flex;

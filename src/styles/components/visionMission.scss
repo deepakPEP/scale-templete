@@ -1,11 +1,15 @@
 @use "../variables" as *;
 
 .vision-mission {
-  background: #fafafa;
+  background: #fff;
   padding: 16px;
 
   @media (min-width: $breakpoint-lg) {
-    padding: 64px;
+    padding: 40px;
+  }
+
+  @media (min-width: $breakpoint-2xl) {
+    padding: 112px 144px;
   }
 
   &__container {
@@ -22,7 +26,7 @@
   }
 
   &__card {
-    background: $white;
+    background: #F7F7F7;
     border-radius: $border-radius-lg;
     padding: 16px;
     width: 100%;

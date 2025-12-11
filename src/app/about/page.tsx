@@ -1,5 +1,6 @@
 import {
   Accordion,
+  AboutSubNav,
   Certifications,
   Clientele,
   CompanyDetails,
@@ -8,6 +9,7 @@ import {
   Infrastructure,
   Overview,
   SubBanner,
+  Teammates,
   Testimonial,
   VisionMission,
   Whyus,
@@ -19,32 +21,58 @@ export default function About() {
     <div className="min-h-screen">
       <SubBanner
         title="About Us"
-        description="Describe the Important features, pricing and other relevant info"
+        description="Home / About Us"
       />
 
-      <Overview />
+      <AboutSubNav />
 
-      <CompanyDetails />
+      <div id="overview">
+        <Overview topClassName="overview-section__top--about" />
+      </div>
 
-      <Whyus />
+      <div id="why-us">
+          <Whyus />
+      </div>
 
-      <VisionMission />
+      <div id="vision-mission">
+        <VisionMission />
+      </div>
 
-      <Imagecontent />
+      <div id="quality-assurance">
+        <Imagecontent heading="Quality Assurance" description="Use this space to promote the business, its products or its services. Help people become familiar with the business and its offerings, creating a sense of connection and trust. Focus on what makes the business unique and how users can benefit from choosing it."/>
+      </div>
 
-      <IndustryWeServe />
+      <div id="industry-we-serve">
+        <IndustryWeServe />
+      </div>
 
-      <Infrastructure />
+      <div id="infrastructure">
+        <Infrastructure />
+      </div>
 
-      <Imagecontent />
+      <div id="r-d">
+        <Imagecontent heading="R&D" description="Use this space to promote the business, its products or its services. Help people become familiar with the business and its offerings, creating a sense of connection and trust. Focus on what makes the business unique and how users can benefit from choosing it.Use this space to promote the business, its products or its services. Help people become familiar with the business and its offerings, creating a sense of connection and trust. Focus on what makes the business unique and how users can benefit from choosing it."/>
+      </div>
 
-      <Certifications />
+      <div id="team">
+        <Teammates/>
+      </div>
 
-      <Accordion />
+      <div id="certifications">
+        <Certifications />
+      </div>
 
-      <Testimonial/>
+      <div id="faq">
+        <Accordion />
+      </div>
 
-      <Clientele />
+      <div id="testimonials">
+        <Testimonial/>
+      </div>
+
+      <div id="clientele">
+        <Clientele />
+      </div>
 
     </div>
   );
